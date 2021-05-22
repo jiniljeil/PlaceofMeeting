@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/animation/animated_bottom_bar.dart';
+import 'package:flutter_widgets/grocerry_kit/welcome.dart';
 import 'package:flutter_widgets/note_app/edit_note.dart';
 
 import 'grocerry_kit/auth.dart';
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.amber,
       ),
       routes: {
-        '/': (context) => AnimatedBottomBar(),
+    //    '/': (context) => AnimatedBottomBar(),
+        '/': (context) => WelcomePage(),
         '/grocerry/auth': (context) => AuthPage(),
         '/grocerry/verify': (context) => VerifyPage(),
         '/grocerry/home': (context) => HomePage(),
