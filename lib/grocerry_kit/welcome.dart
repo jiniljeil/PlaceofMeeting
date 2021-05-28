@@ -27,7 +27,7 @@ class WelcomePage extends StatelessWidget {
                     child: Text('Sign In',
                         style: TextStyle(fontSize: 20, color: Colors.white)),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/grocerry/auth');
+                      Navigator.pushNamed(context, '/grocerry/login');
                     },
                   ),
                 ),
@@ -44,7 +44,7 @@ class WelcomePage extends StatelessWidget {
                     child: Text('Sign Up',
                         style: TextStyle(fontSize: 20, color: Colors.green)),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/grocerry/auth');
+                      Navigator.pushNamed(context, '/grocerry/signup');
                     },
                   ),
                 ),

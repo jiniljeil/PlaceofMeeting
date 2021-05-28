@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/animation/animated_bottom_bar.dart';
+import 'package:flutter_widgets/grocerry_kit/login.dart';
 import 'package:flutter_widgets/grocerry_kit/welcome.dart';
 import 'package:flutter_widgets/note_app/edit_note.dart';
 
-import 'grocerry_kit/auth.dart';
+import 'grocerry_kit/signup.dart';
 import 'grocerry_kit/home_page.dart';
 import 'grocerry_kit/phone_verify.dart';
 import 'grocerry_kit/sub_pages/cart.dart';
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
       routes: {
     //    '/': (context) => AnimatedBottomBar(),
         '/': (context) => WelcomePage(),
-        '/grocerry/auth': (context) => AuthPage(),
+        '/grocerry/signup': (context) => SignupPage(),
+        '/grocerry/login': (context) => LoginPage(),
         '/grocerry/verify': (context) => VerifyPage(),
         '/grocerry/home': (context) => HomePage(),
         '/grocerry/cart': (context) => CartPage(),

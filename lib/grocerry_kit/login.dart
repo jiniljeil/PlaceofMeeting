@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class AuthPage extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _AuthPageState();
+    return _LoginPageState();
   }
 }
 
-class _AuthPageState extends State<AuthPage> {
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +18,7 @@ class _AuthPageState extends State<AuthPage> {
         body: ListView(
           children: <Widget>[
             Container(
-              height: 490,
+              height: 350,
               decoration: BoxDecoration(
                   boxShadow: [
                     new BoxShadow(
@@ -44,20 +44,9 @@ class _AuthPageState extends State<AuthPage> {
                       Container(
                         margin: EdgeInsets.all(16),
                         child: FlatButton(
-                          onPressed: () {},
-                          child: Text(
-                            'Sign In',
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.all(16),
-                        child: FlatButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/grocerry/signup');
+                          },
                           child: Text(
                             'Sign Up',
                             style: TextStyle(
@@ -72,17 +61,9 @@ class _AuthPageState extends State<AuthPage> {
                   Container(
                     margin: EdgeInsets.only(left: 16, top: 8),
                     child: Text(
-                      'Welcome to keells.',
+                      'Welcome to Place of Meeting.',
                       style:
                           TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 16, top: 8),
-                    child: Text(
-                      'Let\'s get started',
-                      style: TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.normal),
                     ),
                   ),
                   Padding(
@@ -93,24 +74,7 @@ class _AuthPageState extends State<AuthPage> {
                       keyboardType: TextInputType.text,
                       textCapitalization: TextCapitalization.words,
                       decoration: InputDecoration(
-                        hintText: 'Name',
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                            borderSide: BorderSide(color: Colors.grey)),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                            borderSide: BorderSide(color: Colors.grey)),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
-                    child: TextField(
-                      keyboardType: TextInputType.emailAddress,
-                      style: TextStyle(fontSize: 18),
-                      decoration: InputDecoration(
-                        hintText: 'E-Mail Address',
+                        hintText: 'ID',
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8),
                             borderSide: BorderSide(color: Colors.grey)),
@@ -147,7 +111,7 @@ class _AuthPageState extends State<AuthPage> {
                         child: IconButton(
                           color: Colors.white,
                           onPressed: () {
-                            Navigator.pushNamed(context, '/grocerry/verify');
+                            Navigator.pushNamed(context, '/grocerry/home');
                           },
                           icon: Icon(Icons.arrow_forward),
                         ),
