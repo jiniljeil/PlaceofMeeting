@@ -18,7 +18,7 @@ class _LoginPageState extends State<LoginPage> {
         body: ListView(
           children: <Widget>[
             Container(
-              height: 350,
+              height: 450,
               decoration: BoxDecoration(
                   boxShadow: [
                     new BoxShadow(

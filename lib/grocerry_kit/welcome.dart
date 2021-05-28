@@ -12,8 +12,16 @@ class WelcomePage extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Text(
-                  'Welcome!',
-                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                    'Place of Meeting',
+                   style: TextStyle(fontSize: 32, fontWeight: FontWeight.w500, letterSpacing: 2.0, color: Colors.pinkAccent),
+                ),
+                Icon(
+                    Icons.people_alt_outlined,
+                    size: 50.0,
+                    color: Colors.pinkAccent,
+                ),
+                SizedBox(
+                  height: 230,
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 32, bottom: 16),
@@ -48,32 +56,8 @@ class WelcomePage extends StatelessWidget {
                     },
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  // crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    Text(
-                      'Language : ',
-                      style: TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.normal),
-                    ),
-                    SizedBox(
-                      width: 8,
-                    ),
-                    FlatButton(
-                      onPressed: () {
-                        
-                      },
-                      child: Text(
-                        'English',
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ],
-                ),
                 SizedBox(
-                  height: 50,
+                  height: 100,
                 )
               ],
             ),

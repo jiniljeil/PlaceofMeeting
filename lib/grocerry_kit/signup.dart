@@ -10,14 +10,7 @@ class SignupPage extends StatefulWidget {
   }
 }
 
-Future main() async{
-  final conn = await MySqlConnection.connect(ConnectionSettings(
-    host: 'placeofmeeting.cjdnzbhmdp0z.us-east-1.rds.amazonaws.com',
-    port: 3306,
-    user: 'rootuser',
-    password: 'databaseproject',
-    db: 'placeofmeeting'));
-}
+
 
 class _SignupPageState extends State<SignupPage> {
   final idController = TextEditingController();
@@ -29,7 +22,31 @@ class _SignupPageState extends State<SignupPage> {
   final phoneController = TextEditingController();
   final _item = ['Man', 'Woman'];
   var _selected = 'Man';
+  var check = 0;
+  int inc = 5;
 
+  Future main(TextEditingController id, TextEditingController pwd, TextEditingController name, String gender,
+      TextEditingController email, TextEditingController pnum ) async{
+
+    final conn = await MySqlConnection.connect(ConnectionSettings(
+        host: 'placeofmeeting.cjdnzbhmdp0z.us-east-1.rds.amazonaws.com',
+        port: 3306,
+        user: 'rootuser',
+        db: 'placeofmeeting'  ,
+        password: 'databaseproject'
+        ));
+
+    print('dddddddd');
+
+    var result = await conn.query(
+         'insert into login_info values (?, ?, ?, ?, ?, ?, ?)',
+          [inc, gender=='Man'? 1 : 0, 000123, id.text, pwd.text, email.text, pnum.text]
+    );
+    print('Inserted row id=${result.insertId}');
+
+    print('sadfsadf');
+    inc++;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +58,7 @@ class _SignupPageState extends State<SignupPage> {
         ListView(
           children: <Widget>[
             Container(
-              height: 700,
+              height: 850,
               decoration: BoxDecoration(
                   boxShadow: [
                     new BoxShadow(
@@ -250,6 +267,7 @@ class _SignupPageState extends State<SignupPage> {
                           child: IconButton (
                             color: Colors.white,
                             onPressed: () {
+                              main(idController, pwdController, nameController, _selected, emailController, phoneController);
                               Navigator.pushNamed(context, '/');
                             },
                             icon: Icon(Icons.arrow_forward),
