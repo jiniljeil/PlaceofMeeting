@@ -17,6 +17,7 @@ class _SignupPageState extends State<SignupPage> {
   final pwdController = TextEditingController();
   final pwd2Controller = TextEditingController();
   final nameController = TextEditingController();
+  final dateController = TextEditingController();
   final genderController = TextEditingController();
   final emailController = TextEditingController();
   final phoneController = TextEditingController();
@@ -24,7 +25,7 @@ class _SignupPageState extends State<SignupPage> {
   final _item = ['Man', 'Woman'];
   var _selected = 'Man';
   bool _validate = false;
-  int inc = 5;
+  int inc = 7;
 
   Future<int> checkdup(TextEditingController id) async {
     final conn = await MySqlConnection.connect(ConnectionSettings(
@@ -47,7 +48,7 @@ class _SignupPageState extends State<SignupPage> {
     return 0;
   }
 
-  Future main(TextEditingController id, TextEditingController pwd, TextEditingController name, String gender,
+  Future main(TextEditingController id, TextEditingController pwd, TextEditingController name, TextEditingController date, String gender,
       TextEditingController email, TextEditingController pnum ) async{
 
     final conn = await MySqlConnection.connect(ConnectionSettings(
@@ -62,7 +63,7 @@ class _SignupPageState extends State<SignupPage> {
 
     var result = await conn.query(
          'insert into login_info values (?, ?, ?, ?, ?, ?, ?)',
-          [inc, gender=='Man'? 1 : 0, 000123, id.text, pwd.text, email.text, pnum.text]
+          [inc, gender=='Man'? 1 : 0, date.text, id.text, pwd.text, email.text, pnum.text]
     );
     print('Inserted row id=${result.insertId}');
 
@@ -159,26 +160,25 @@ class _SignupPageState extends State<SignupPage> {
                               borderRadius: BorderRadius.circular(8),
                               borderSide: BorderSide(color: Colors.grey)),
                           suffixIcon: IconButton(
-                              padding: EdgeInsets.only(right: 30),
                               icon: Icon(Icons.check),
-                            onPressed: () async {
-                                var result;
-                                result = await checkdup(idController);
-                                if(result == 0){
-                                  ScaffoldMessenger.of(context).showSnackBar(
+                              onPressed: () async {
+                                  var result;
+                                  result = await checkdup(idController);
+                                  if(result == 0){
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                          content: Text('사용가능한 ID입니다.'),
+                                        ),
+                                    );
+                                  }
+                                  else{
+                                    ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
-                                        content: Text('사용가능한 ID입니다.'),
+                                        content: Text('이미 존재하는 ID입니다.'),
                                       ),
-                                  );
-                                }
-                                else{
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text('이미 존재하는 ID입니다.'),
-                                    ),
-                                  );
-                                }
-                            },
+                                    );
+                                  }
+                              },
                           ),
                         ),
                       ),
@@ -189,7 +189,7 @@ class _SignupPageState extends State<SignupPage> {
                       child: TextField(
                         controller: pwdController,
                         obscureText: true,
-                        keyboardType: TextInputType.number,
+                        keyboardType: TextInputType.text,
                         style: TextStyle(fontSize: 18),
                         decoration: InputDecoration(
                           hintText: 'Passward',
@@ -199,6 +199,7 @@ class _SignupPageState extends State<SignupPage> {
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide: BorderSide(color: Colors.grey)),
+                          suffixIcon: Icon(Icons.lock),
                         ),
 
                       ),
@@ -210,7 +211,7 @@ class _SignupPageState extends State<SignupPage> {
                         controller: pwd2Controller,
                         obscureText: true,
                         style: TextStyle(fontSize: 18),
-                        keyboardType: TextInputType.number,
+                        keyboardType: TextInputType.text,
                         decoration: InputDecoration(
                           hintText: 'Passward Reconfirm',
                           enabledBorder: OutlineInputBorder(
@@ -219,7 +220,26 @@ class _SignupPageState extends State<SignupPage> {
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide: BorderSide(color: Colors.grey)),
+                          suffixIcon: Icon(Icons.lock),
 
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                      EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                      child: TextField(
+                        controller: dateController,
+                        style: TextStyle(fontSize: 18),
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                          hintText: 'Date of birth(ex 950725)',
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: BorderSide(color: Colors.grey)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: BorderSide(color: Colors.grey)),
                         ),
                       ),
                     ),
@@ -314,7 +334,7 @@ class _SignupPageState extends State<SignupPage> {
                           child: IconButton (
                             color: Colors.white,
                             onPressed: () {
-                              main(idController, pwdController, nameController, _selected, emailController, phoneController);
+                              main(idController, pwdController, nameController, dateController,_selected, emailController, phoneController);
                               Navigator.pushNamed(context, '/');
                             },
                             icon: Icon(Icons.arrow_forward),
