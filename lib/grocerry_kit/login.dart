@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mysql1/mysql1.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -8,6 +9,33 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final idController = TextEditingController();
+  final pwdController = TextEditingController();
+
+  Future main(TextEditingController id, TextEditingController pwd) async{
+    final conn = await MySqlConnection.connect(ConnectionSettings(
+        host: 'placeofmeeting.cjdnzbhmdp0z.us-east-1.rds.amazonaws.com',
+        port: 3306,
+        user: 'rootuser',
+        db: 'placeofmeeting'  ,
+        password: 'databaseproject'
+    ));
+
+    var login = await conn.query(
+        'select user_id, password from login_info');
+
+    for(var row in login){
+      print('DEBUG  ' +  id.text + '  ' + '${row[0]}');
+      print('DEBUG  ' +  pwd.text + '  ' + '${row[1]}');
+      if(id.text == '${row[0]}'	&& pwd.text == '${row[1]}'){
+        print('login');
+        return 1;
+      }
+    }
+
+    return 0;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,6 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                         left: 16, right: 16, top: 32, bottom: 8),
                     child: TextField(
                       style: TextStyle(fontSize: 18),
+                      controller: idController,
                       keyboardType: TextInputType.text,
                       textCapitalization: TextCapitalization.words,
                       decoration: InputDecoration(
@@ -89,6 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                         EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
                     child: TextField(
                       obscureText: true,
+                      controller: pwdController,
                       style: TextStyle(fontSize: 18),
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
@@ -110,9 +140,21 @@ class _LoginPageState extends State<LoginPage> {
                             color: Colors.green, shape: BoxShape.circle),
                         child: IconButton(
                           color: Colors.white,
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/grocerry/home');
-                          },
+                          onPressed: () async{
+                            var result;
+                            result = await main(idController, pwdController);
+                            print(result);
+                            if(result == 1) {
+                              Navigator.pushNamed(context, '/grocerry/home');
+                            }
+                            else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text('ID가 존재하지 않거나, 잘못된 비밀번호 입니다.'),
+                                  ),
+                              );
+                            }
+                            },
                           icon: Icon(Icons.arrow_forward),
                         ),
                       )),

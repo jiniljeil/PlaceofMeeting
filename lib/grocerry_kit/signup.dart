@@ -20,10 +20,32 @@ class _SignupPageState extends State<SignupPage> {
   final genderController = TextEditingController();
   final emailController = TextEditingController();
   final phoneController = TextEditingController();
+  final _idform = GlobalKey<FormState>();
   final _item = ['Man', 'Woman'];
   var _selected = 'Man';
-  var check = 0;
+  bool _validate = false;
   int inc = 5;
+
+  Future<int> checkdup(TextEditingController id) async {
+    final conn = await MySqlConnection.connect(ConnectionSettings(
+        host: 'placeofmeeting.cjdnzbhmdp0z.us-east-1.rds.amazonaws.com',
+        port: 3306,
+        user: 'rootuser',
+        db: 'placeofmeeting',
+        password: 'databaseproject'
+    ));
+
+    var results = await conn.query(
+        'select user_id from login_info');
+
+    for(var row in results){
+      if(id.text == '${row[0]}'){
+        print('DEBUG' + id.text + '${row[0]}');
+        return 1;
+      }
+    }
+    return 0;
+  }
 
   Future main(TextEditingController id, TextEditingController pwd, TextEditingController name, String gender,
       TextEditingController email, TextEditingController pnum ) async{
@@ -44,7 +66,6 @@ class _SignupPageState extends State<SignupPage> {
     );
     print('Inserted row id=${result.insertId}');
 
-    print('sadfsadf');
     inc++;
   }
   @override
@@ -117,10 +138,18 @@ class _SignupPageState extends State<SignupPage> {
                     Padding(
                       padding:
                       EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
-                      child: TextField(
+                      child: TextFormField(
                         controller: idController,
+                        key: _idform,
                         style: TextStyle(fontSize: 18),
                         keyboardType: TextInputType.text,
+                        validator: (value){
+                          if(value.isEmpty){
+                            return 'Enter some text';
+                          }
+                          else
+                            return null;
+                        },
                         decoration: InputDecoration(
                           hintText: 'ID',
                           enabledBorder: OutlineInputBorder(
@@ -132,10 +161,25 @@ class _SignupPageState extends State<SignupPage> {
                           suffixIcon: IconButton(
                               padding: EdgeInsets.only(right: 30),
                               icon: Icon(Icons.check),
-                              onPressed: () {
-                                // 중복체크 쿼리
-                              },
-                            ),
+                            onPressed: () async {
+                                var result;
+                                result = await checkdup(idController);
+                                if(result == 0){
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text('사용가능한 ID입니다.'),
+                                      ),
+                                  );
+                                }
+                                else{
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('이미 존재하는 ID입니다.'),
+                                    ),
+                                  );
+                                }
+                            },
+                          ),
                         ),
                       ),
                     ),
@@ -156,12 +200,13 @@ class _SignupPageState extends State<SignupPage> {
                               borderRadius: BorderRadius.circular(8),
                               borderSide: BorderSide(color: Colors.grey)),
                         ),
+
                       ),
                     ),
                     Padding(
                       padding:
                           EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
-                      child: TextField(
+                      child: TextFormField(
                         controller: pwd2Controller,
                         obscureText: true,
                         style: TextStyle(fontSize: 18),
@@ -174,6 +219,7 @@ class _SignupPageState extends State<SignupPage> {
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide: BorderSide(color: Colors.grey)),
+
                         ),
                       ),
                     ),
@@ -186,6 +232,7 @@ class _SignupPageState extends State<SignupPage> {
                         keyboardType: TextInputType.text,
                         decoration: InputDecoration(
                           hintText: 'Name',
+                          errorText: _validate ? 'Value Can\'t Be Empty' : null,
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide: BorderSide(color: Colors.grey)),
