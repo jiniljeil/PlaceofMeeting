@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets/grocerry_kit/my_profile.dart';
+import 'package:flutter_widgets/grocerry_kit/profile.dart';
+import 'package:flutter_widgets/grocerry_kit/search.dart';
 import 'package:flutter_widgets/utils/cart_icons_icons.dart';
 import 'sub_pages/home_list.dart';
 import 'sub_pages/cart.dart';
@@ -12,10 +15,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Widget> _widgetList = [
+    // 여기서 bottom bar 변경
     HomeList(),
-    CartPage(),
-    HomeList(),
-    HomeList(),
+    SearchPage(),
+    ProfileList(),
+    ProfilePage(),
   ];
 
   int _index = 0;
@@ -37,22 +41,22 @@ class _HomePageState extends State<HomePage> {
         items: [
           BottomNavigationBarItem(
               icon: Icon(
-                CartIcons.home,
+                Icons.home,
               ),
-              title: Text('   Store  ', style: TextStyle())),
+              title: Text('   Home  ', style: TextStyle())),
           BottomNavigationBarItem(
               icon: Icon(
-                CartIcons.cart,
+                Icons.search,
               ),
-              title: Text('My Cart', style: TextStyle())),
+              title: Text('Search', style: TextStyle())),
           BottomNavigationBarItem(
               icon: Icon(
-                CartIcons.favourites,
+                Icons.favorite_border_outlined,
               ),
-              title: Text('Favourites', style: TextStyle())),
+              title: Text('Room', style: TextStyle())),
           BottomNavigationBarItem(
               icon: Icon(
-                CartIcons.account,
+                Icons.person,
               ),
               title: Text(
                 'My Account',
@@ -73,7 +77,7 @@ Widget _buildAppBar() {
     backgroundColor: Colors.green,
     automaticallyImplyLeading: false,
     title: Text(
-      'Keels',
+      '좋은사람 있으면 소개시켜줘',
       style: TextStyle(color: Colors.white),
     ),
     actions: <Widget>[

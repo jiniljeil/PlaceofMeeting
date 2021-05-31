@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/animation/animated_bottom_bar.dart';
+import 'package:flutter_widgets/grocerry_kit/chatroom.dart';
+import 'package:flutter_widgets/grocerry_kit/game.dart';
+import 'package:flutter_widgets/grocerry_kit/home_page.dart';
 import 'package:flutter_widgets/grocerry_kit/login.dart';
+import 'package:flutter_widgets/grocerry_kit/make_room.dart';
+import 'package:flutter_widgets/grocerry_kit/music.dart';
+import 'package:flutter_widgets/grocerry_kit/my_profile.dart';
+import 'package:flutter_widgets/grocerry_kit/profile.dart';
+import 'package:flutter_widgets/grocerry_kit/search.dart';
+import 'package:flutter_widgets/grocerry_kit/sports.dart';
+import 'package:flutter_widgets/grocerry_kit/study.dart';
 import 'package:flutter_widgets/grocerry_kit/welcome.dart';
 import 'package:flutter_widgets/note_app/edit_note.dart';
 
 import 'grocerry_kit/signup.dart';
-import 'grocerry_kit/home_page.dart';
-import 'grocerry_kit/phone_verify.dart';
 import 'grocerry_kit/sub_pages/cart.dart';
 
 void main() => runApp(MyApp());
@@ -27,9 +35,18 @@ class MyApp extends StatelessWidget {
         '/': (context) => WelcomePage(),
         '/grocerry/signup': (context) => SignupPage(),
         '/grocerry/login': (context) => LoginPage(),
-        '/grocerry/verify': (context) => VerifyPage(),
         '/grocerry/home': (context) => HomePage(),
         '/grocerry/cart': (context) => CartPage(),
+        '/grocerry/chatroom': (context) => ChatRoomPage(),
+        '/grocerry/profile': (context) => ProfileList(),
+        '/grocerry/game': (context) => GamePage(),
+        '/grocerry/study': (context) => StudyPage(),
+        '/grocerry/sports': (context) => SportsPage(),
+        '/grocerry/music': (context) => MusicPage(),
+        '/grocerry/makeroom': (context) => makeRoomPage(),
+        '/grocerry/search': (context) => SearchPage(),
+        '/grocerry/my_profile': (context) => ProfilePage(),
+
         AnimatedBottomBar.tag: (context) => AnimatedBottomBar(),
         EditNote.tag: (context) => EditNote(),
       },

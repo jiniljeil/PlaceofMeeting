@@ -25,7 +25,7 @@ class _SignupPageState extends State<SignupPage> {
   final _item = ['Man', 'Woman'];
   var _selected = 'Man';
   bool _validate = false;
-  int inc = 7;
+  int inc = 8;
 
   Future<int> checkdup(TextEditingController id) async {
     final conn = await MySqlConnection.connect(ConnectionSettings(
