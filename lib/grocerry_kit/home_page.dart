@@ -5,6 +5,7 @@ import 'package:flutter_widgets/grocerry_kit/search.dart';
 import 'package:flutter_widgets/utils/cart_icons_icons.dart';
 import 'sub_pages/home_list.dart';
 import 'sub_pages/cart.dart';
+import 'package:flutter_widgets/grocerry_kit/my_account.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -19,7 +20,7 @@ class _HomePageState extends State<HomePage> {
     HomeList(),
     SearchPage(),
     ProfileList(),
-    ProfilePage(),
+    MyAccountPage(),
   ];
 
   int _index = 0;
