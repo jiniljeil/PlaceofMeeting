@@ -10,8 +10,9 @@ class makeRoomPage extends StatelessWidget {
           backgroundColor: Colors.green,
           leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Colors.black),
-  //          onPressed: () => Navigator.of(context).pop(),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, '/grocerry/home');
+            },
           ),
           centerTitle: true,
           title: Row(
@@ -20,7 +21,7 @@ class makeRoomPage extends StatelessWidget {
             children: <Widget>[
               Icon(Icons.house, color: Colors.white),
               Padding(
-                padding: EdgeInsets.only(left: 10),
+                  padding: EdgeInsets.only(left: 10),
               ),
               Text(
                 'Make a Room',

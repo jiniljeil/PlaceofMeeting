@@ -5,6 +5,8 @@ import 'package:flutter_widgets/grocerry_kit/game.dart';
 import 'package:flutter_widgets/grocerry_kit/home_page.dart';
 import 'package:flutter_widgets/grocerry_kit/login.dart';
 import 'package:flutter_widgets/grocerry_kit/make_room.dart';
+import 'package:flutter_widgets/grocerry_kit/managa_list.dart';
+import 'package:flutter_widgets/grocerry_kit/managa_one.dart';
 import 'package:flutter_widgets/grocerry_kit/music.dart';
 import 'package:flutter_widgets/grocerry_kit/my_account.dart';
 import 'package:flutter_widgets/grocerry_kit/my_profile.dart';
@@ -40,17 +42,34 @@ class MyApp extends StatelessWidget {
         '/grocerry/cart': (context) => CartPage(),
         '/grocerry/chatroom': (context) => ChatRoomPage(),
         '/grocerry/profile': (context) => ProfileList(),
-        '/grocerry/game': (context) => GamePage(),
-        '/grocerry/study': (context) => StudyPage(),
-        '/grocerry/sports': (context) => SportsPage(),
-        '/grocerry/music': (context) => MusicPage(),
+     //   '/grocerry/game': (context) => GamePage(),
+     //   '/grocerry/study': (context) => StudyPage(),
+     //   '/grocerry/sports': (context) => SportsPage(),
+    //    '/grocerry/music': (context) => MusicPage(),
         '/grocerry/makeroom': (context) => makeRoomPage(),
         '/grocerry/search': (context) => SearchPage(),
         '/grocerry/my_account': (context) => MyAccountPage(),
+        '/grocerry/manage': (context) => ManageList(),
+        '/grocerry/manage_one': (context) => ManageOne(),
 
         AnimatedBottomBar.tag: (context) => AnimatedBottomBar(),
         EditNote.tag: (context) => EditNote(),
       },
+      onGenerateRoute: _getRoute,
     );
   }
+  Route<dynamic> _getRoute (RouteSettings settings){
+    if(settings.name == '/grocerry/category_detail'){
+      return _buildRoute(settings, new CategoryDetailPage(settings.arguments));
+    }
+    return null;
+  }
+
+  MaterialPageRoute _buildRoute(RouteSettings settings, Widget builder){
+    return new MaterialPageRoute(
+      settings: settings,
+      builder: (ctx) => builder,
+    );
+  }
+
 }

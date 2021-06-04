@@ -1,14 +1,25 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/utils/cart_icons_icons.dart';
 
 import 'model/product_model.dart';
 
-class GamePage extends StatelessWidget {
+class CategoryDetailPage extends StatelessWidget {
+  String category_title;
+  IconData category_icon;
+  CategoryDetailPage(Product arguments){
+    category_title = arguments.name;
+    category_icon = arguments.image;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+
+    return
+      Scaffold(
       appBar: AppBar(
-        title: Text('게임'),
+        title: Text(category_title),
 
       ),
       body: Container(
@@ -24,7 +35,7 @@ class GamePage extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(left: 16, top: 4),
                   child: Text(
-                    '채팅 방',
+                    'Boards',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -53,7 +64,7 @@ class GamePage extends StatelessWidget {
               height: 200,
               alignment: Alignment.center,
               child: Icon(
-                Icons.videogame_asset_outlined,
+                category_icon,
                 size: 200,
                 color: Colors.lightGreen,
               ),
