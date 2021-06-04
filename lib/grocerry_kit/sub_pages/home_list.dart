@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mysql1/mysql1.dart';
+import 'package:flutter/widgets.dart';
 import '../game.dart';
 import '../model/product_model.dart';
 import 'package:flutter_widgets/utils/cart_icons_icons.dart';
@@ -42,6 +43,7 @@ class HomeList extends StatelessWidget {
         color: const Color(0xffF4F7FA),
         child: ListView(
           children: <Widget>[
+            SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -59,7 +61,7 @@ class HomeList extends StatelessWidget {
             ),
             _buildCategoryList(), // 리얼 카테고리 나열한 친구
             SizedBox(
-              height: 50,
+              height: 20,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
