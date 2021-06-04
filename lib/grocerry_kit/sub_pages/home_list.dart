@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mysql1/mysql1.dart';
 import 'package:flutter/widgets.dart';
-import '../game.dart';
+import '../category_detail.dart';
 import '../model/product_model.dart';
 import 'package:flutter_widgets/utils/cart_icons_icons.dart';
 
@@ -11,11 +11,8 @@ import 'package:flutter_widgets/utils/cart_icons_icons.dart';
 class HomeList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Future load_db() async{
-    //   await room_list();
-    // }
-    // load_db();
-    room_list();
+
+//    room_list();
     return Scaffold(
       body: Container(
         color: const Color(0xffF4F7FA),
@@ -92,7 +89,12 @@ class HomeList extends StatelessWidget {
                 iconSize: 45,
                 color: Colors.black38,
                 onPressed: (){
-                  Navigator.pushNamed(context, '/grocerry/category_detail', arguments: data);
+                  print(index);
+//                  Navigator.pushNamed(context, '/grocerry/category_detail', arguments: data);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CategoryDetailPage(category_id: index))
+                  );
                 },
               ),
               decoration: BoxDecoration(
@@ -119,6 +121,7 @@ class HomeList extends StatelessWidget {
   final List<int> category_set = new List<int>();
   final List<int> roomId_set = new List<int>();
   int real_room_cnt = 0;
+
   Future room_list() async{
     final conn = await MySqlConnection.connect(ConnectionSettings(
         host: 'placeofmeeting.cjdnzbhmdp0z.us-east-1.rds.amazonaws.com',
@@ -177,22 +180,14 @@ class HomeList extends StatelessWidget {
   List<Product> CategoryList() {
     var list = List<Product>();
 
-    var data0 = Product('Sports', Icons.sports_basketball_outlined);
+    list.add(new Product('Sports', Icons.sports_basketball_outlined));
+    list.add(new Product('Game', Icons.videogame_asset_outlined));
+    list.add(new Product('Music', Icons.music_video));
+    list.add(new Product('Study', Icons.menu_book_outlined));
+    list.add(new Product('Food', Icons.fastfood));
+    list.add(new Product('Friends', Icons.wc));
+    list.add(new Product('Etc', Icons.video_collection_outlined));
     // 이름, 이미지를 넣을 수 있다.
-    list.add(data0);
-    var data1 = Product('Game', Icons.videogame_asset_outlined);
-    list.add(data1);
-    var data2 = Product('Music', Icons.music_video);
-    list.add(data2);
-    var data3 = Product('Study', Icons.menu_book_outlined);
-    list.add(data3);
-    var data4 = Product('Food', Icons.fastfood);
-    list.add(data4);
-    var data5 = Product('Friends', Icons.wc);
-    list.add(data5);
-    var data6 = Product('Etc', Icons.video_collection_outlined);
-    list.add(data6);
-
 
     return list;
   }

@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat Jun 05 01:13:44 KST 2021
+#Sat Jun 05 02:04:51 KST 2021
 8.base=C\:\\Users\\audwn\\StudioProjects\\Flutter-UI-Kits\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 2.base=C\:\\Users\\audwn\\StudioProjects\\Flutter-UI-Kits\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 0.path=flutter_assets/images/menu_icon.png
