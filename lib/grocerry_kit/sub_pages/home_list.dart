@@ -1,10 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:mysql1/mysql1.dart';
 import '../game.dart';
 import '../model/product_model.dart';
 import 'package:flutter_widgets/utils/cart_icons_icons.dart';
 
 //https://medium.com/flutter-community/building-a-chat-app-with-flutter-and-firebase-from-scratch-9eaa7f41782e
 // 여기 참고해서 DB랑 연결 시 코드 변경경
+// 카테고리 고정 ()
+final List<String> title_set = new List<String>();
+final List<int> count_set = new List<int>();
+final List<int> category_set = new List<int>();
+final List<int> roomId_set = new List<int>();
+
+Future room_list() async{
+
+  final conn = await MySqlConnection.connect(ConnectionSettings(
+      host: 'placeofmeeting.cjdnzbhmdp0z.us-east-1.rds.amazonaws.com',
+      port: 3306,
+      user: 'rootuser',
+      db: 'placeofmeeting'  ,
+      password: 'databaseproject'
+  ));
+
+  var room_info = await conn.query(
+      'select category, title, count, room_id from rooms');
+
+  for(var row in room_info){
+    print(row[0].toString() +" "+row[1]+" "+row[2].toString() + " "+ row[3].toString());
+    category_set.add(row[0].toInt());
+    title_set.add(row[1]);
+    count_set.add(row[2].toInt());
+    roomId_set.add(row[3]);
+  }
+}
+
 class HomeList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -54,34 +83,6 @@ class HomeList extends StatelessWidget {
               ],
             ),
             _buildChatList(), // 리얼 아이템 나열한 친구
-            /*
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(left: 16, top: 4),
-                  child: Text(
-                    'Keells Deals',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 16, top: 4),
-                  child: FlatButton(
-                    onPressed: () {},
-                    child: Text(
-                      'View All',
-                      style: TextStyle(color: Colors.green),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            _buildDealList()
-             */
           ],
         ),
       ),
@@ -143,6 +144,27 @@ class HomeList extends StatelessWidget {
 
   Widget _buildChatList() {
     //var items = ChatUsers();
+
+    // Future room_list() async{
+    //   final conn = await MySqlConnection.connect(ConnectionSettings(
+    //       host: 'placeofmeeting.cjdnzbhmdp0z.us-east-1.rds.amazonaws.com',
+    //       port: 3306,
+    //       user: 'rootuser',
+    //       db: 'placeofmeeting'  ,
+    //       password: 'databaseproject'
+    //   ));
+    //
+    //   var room_info = await conn.query(
+    //       'select category, title, count, room_id from rooms');
+    //
+    //   for(var row in room_info){
+    //     print(row[0].toString() +" "+row[1]+" "+row[2].toString() + " "+ row[3].toString());
+    //     category_set.add(row[0].toInt());
+    //     title_set.add(row[1]);
+    //     count_set.add(row[2].toInt());
+    //     roomId_set.add(row[3]);
+    //   }
+    // }
     return Container(
       height: 350,
       alignment: Alignment.centerLeft,
@@ -150,44 +172,17 @@ class HomeList extends StatelessWidget {
         shrinkWrap: true,
         physics: ClampingScrollPhysics(),
         scrollDirection: Axis.vertical,
-        itemCount: chatUsers.length, // 채팅방 수
+        itemCount: title_set.length, // 채팅방 수
         itemBuilder: (context, index) {
           //var data = items[index];
+          print("Hello builder");
+          print(title_set.length.toString());
           return  ChatRoomList(
-            name: chatUsers[index].name,
-            room_ex: chatUsers[index].room_ex,
-            imageUrl: chatUsers[index].imageURL,
+            title: title_set[index],
+            category: category_set[index].toString(),// 일시적 조치 category
+            count: count_set[index].toString(), // 카운트
+            roomID: roomId_set[index],
           );
-          /*Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Container(
-                  //margin: EdgeInsets.all(5),
-                  width: 380,
-                  height: 80,
-                  alignment: Alignment.center,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      ListTile(
-                        leading: Icon(
-                          Icons.videogame_asset_outlined,
-                          size: 40,
-                          color: Colors.black38,
-                        ),
-                        title: Text('방 제목'),
-                        subtitle: Text(
-                            '채팅방 설명'),
-                        onTap: (){
-                          /*enter the chat room*/
-                        },
-                        //trailing: const Divider(thickness: 1,),
-                      ),
-                    ],
-                  ),
-                ),
-              ]);*/
         },
       ),
     );
@@ -246,21 +241,41 @@ class ChatUsers{
 }
 
 class ChatRoomList extends StatefulWidget{
-  String name; // 방제목
-  String room_ex; // 방 설명
-  String imageUrl; //Icon icon_name; // 아이콘이나 이미지
+  String title; // 방제목
+  String category; // 방 설명
+  String count; //Icon icon_name; // 아이콘이나 이미지
+  int roomID;
   // String time;
   // bool isMessageRead;
-  ChatRoomList({@required this.name,@required this.room_ex,@required this.imageUrl/*,@required this.time,@required this.isMessageRead*/});
+  ChatRoomList({@required this.title,@required this.category,@required this.count, @required this.roomID/*,@required this.time,@required this.isMessageRead*/});
   @override
   _ChatRoomListState createState() => _ChatRoomListState();
 }
 
 class _ChatRoomListState extends State<ChatRoomList> {
+  int favorite = -1; // temporary
+  Future favorite_set(int favorite, int roomID) async{
+    final conn = await MySqlConnection.connect(ConnectionSettings(
+        host: 'placeofmeeting.cjdnzbhmdp0z.us-east-1.rds.amazonaws.com',
+        port: 3306,
+        user: 'rootuser',
+        db: 'placeofmeeting'  ,
+        password: 'databaseproject'
+    ));
+
+    if(favorite == -1){ // not
+      await conn.query(
+           'update rooms set selected=0 where room_id=${roomID}'); // update가 필요
+    }else{ // favorite
+      await conn.query(
+          'update rooms set selected=1 where room_id=${roomID}');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () async {
       },
       child: Container(
         padding: EdgeInsets.only(left: 16,right: 16,top: 10,bottom: 10),
@@ -270,7 +285,7 @@ class _ChatRoomListState extends State<ChatRoomList> {
               child: Row(
                 children: <Widget>[
                   CircleAvatar(
-                    backgroundImage: NetworkImage(widget.imageUrl),
+                    child: Text(widget.count),
                     maxRadius: 30,
                   ),
                   SizedBox(width: 16,),
@@ -280,12 +295,24 @@ class _ChatRoomListState extends State<ChatRoomList> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text(widget.name, style: TextStyle(fontSize: 16),),
+                          Text(widget.category, style: TextStyle(fontSize: 16),),
                           SizedBox(height: 6,),
-                          Text(widget.room_ex,style: TextStyle(fontSize: 13,color: Colors.grey.shade600, fontWeight: FontWeight.normal),),
+                          Text(widget.title,style: TextStyle(fontSize: 13,color: Colors.grey.shade600, fontWeight: FontWeight.normal),),
                         ],
                       ),
                     ),
+                  ),
+                  IconButton(
+                    icon: favorite==-1?
+                    Icon(Icons.favorite_border_outlined):Icon(Icons.favorite),
+                    color: Colors.red,
+                    onPressed: () async {
+                      setState(() {
+                        favorite *= -1;
+                        // -1: empty , 1: fill
+                        favorite_set(favorite, widget.roomID);
+                      });
+                    },
                   ),
                 ],
               ),
@@ -296,3 +323,8 @@ class _ChatRoomListState extends State<ChatRoomList> {
     );
   }
 }
+
+/*
+* version info = favorite button icon added (not DB)
+*
+* */
