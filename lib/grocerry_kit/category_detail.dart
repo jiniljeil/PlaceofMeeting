@@ -16,7 +16,7 @@ class CategoryDetailPage extends StatefulWidget {
 
 class _CategoryDetailPage extends State<CategoryDetailPage> {
 
-  Map<int,String> category_title = {0: 'Sports', 1: 'Game', 2:'Music', 3:'Study', 4:'Food', 5: 'Friends', 6:'etc'};
+  Map<int,String> category_title = {0: 'Sports', 1: 'Game', 2:'Music', 3:'Study', 4:'Food', 5: 'Friends', 6: 'Book' ,7:'etc'};
   IconData category_icon ;
   List<ChatUsers> chatUsers = new List<ChatUsers>();
 
@@ -52,7 +52,6 @@ class _CategoryDetailPage extends State<CategoryDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-
     return
       Scaffold(
         appBar: AppBar(

@@ -85,7 +85,6 @@ class _MyAccountPage extends State<MyAccountPage> {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
 //          mainAxisSize: MainAxisSize.min,
-
                     children: <Widget>[
                       Container(
                           margin: EdgeInsets.only(top:20),

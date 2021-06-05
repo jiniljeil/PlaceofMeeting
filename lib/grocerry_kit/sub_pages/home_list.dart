@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets/grocerry_kit/home_page.dart';
+import 'package:flutter_widgets/grocerry_kit/make_room.dart';
 import 'package:mysql1/mysql1.dart';
 import 'package:flutter/widgets.dart';
 import '../category_detail.dart';
@@ -9,9 +11,11 @@ import 'package:flutter_widgets/utils/cart_icons_icons.dart';
 // 여기 참고해서 DB랑 연결 시 코드 변경경
 
 class HomeList extends StatelessWidget {
+  final int id;
+  HomeList({Key key, @required this.id}) : super(key:key);
+
   @override
   Widget build(BuildContext context) {
-
 //    room_list();
     return Scaffold(
       body: Container(
@@ -51,12 +55,24 @@ class HomeList extends StatelessWidget {
                     ),
                   ),
                 ),
-                IconButton(
-                    onPressed: (){
-                      Navigator.pushNamed(context, '/grocerry/makeroom');
-                    },
-                    icon: Icon(Icons.add_circle_outlined)
+                Padding(
+                  padding:EdgeInsets.only(right: 20),
+                  child: FloatingActionButton(
+                    backgroundColor: Colors.green,
+                      child: Icon(
+                        Icons.add,
+                        color: Colors.white,
+                        size: 33,
+                    ),
+                    onPressed: () {
+                      print(id);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => makeRoomPage(id: id))
+                      );
+                    }
                 ),
+                )
               ],
             ),
             _buildChatList(), // 리얼 아이템 나열한 친구
@@ -191,6 +207,7 @@ class HomeList extends StatelessWidget {
 
     return list;
   }
+
 }
 
 class ChatRoomList extends StatefulWidget{

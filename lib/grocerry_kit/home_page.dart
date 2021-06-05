@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   //  print(arg.uid);
     List<Widget> _widgetList = [
       // 여기서 bottom bar 변경
-      HomeList(),
+      HomeList(id: widget.id),
       SearchPage(),
       ProfileList(),
       MyAccountPage(id: widget.id),

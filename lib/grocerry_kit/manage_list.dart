@@ -37,17 +37,20 @@ class ManageList extends StatefulWidget {
 }
 
 class Manage{
-  int zz;
-  int ss;
+  String title;
+  String description;
+  double count;
 
-  Manage(this.zz, this.ss);
+  Manage(this.title, this.description, this.count);
 }
 
 class _ManageListState extends State<ManageList>{
-  int n;
-  List<Manage> _list;
+  List<Manage> _list = [];
+  int num;
 
   Future<int> getData(int uid) async{
+    List<Manage> temp = [];
+    int n_data;
     final conn = await MySqlConnection.connect(ConnectionSettings(
         host: 'placeofmeeting.cjdnzbhmdp0z.us-east-1.rds.amazonaws.com',
         port: 3306,
@@ -56,27 +59,34 @@ class _ManageListState extends State<ManageList>{
         password: 'databaseproject'
     ));
 
-    final results = await conn.query(
-        'select * from rooms where host_id = ?', [uid]);
+    var results = await conn.query(
+        'select title, description, count '
+            'from rooms where host_id = ?', [uid]);
     conn.close();
 
     for(var row in results) {
-      print('Name: ${row[0]}, email: ${row[1]}');
-      var temp = new Manage(row[0], row[1]);
-      _list.add(temp);
+      print('title: ${row[0]}, desc: ${row[1]}, count: ${row[2]}');
+      Manage m = new Manage(row[0], row[1], row[2]);
+      temp.add((m));
+   //   _list.add(temp);
     }
 
-    n = results.length;
+ //   n_data = results.length;
+    print(n_data);
+
+    num = results.length;
+    _list = temp;
   }
 
   final Future<String> _calculation = Future<String>.delayed(
-    const Duration(seconds: 1),
+    const Duration(seconds: 3),
         () => 'Data Loaded',
   );
 
   @override
   Widget build(BuildContext context) {
     int uid = widget.id;
+    getData(uid);
 
     return Scaffold(
       appBar: _buildAppBar(context),
@@ -90,7 +100,17 @@ class _ManageListState extends State<ManageList>{
           List<Widget> children;
           if(snapshot.hasData){
             children = <Widget>[
-              _myList(n)
+              SizedBox(height: 30),
+              Text(
+                  'Managing',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                  textAlign: TextAlign.center,
+              ),
+              _myList(num, _list),
             ];
           }else if (snapshot.hasError) {
             children = <Widget>[
@@ -106,15 +126,16 @@ class _ManageListState extends State<ManageList>{
             ];
           } else {
             children = const <Widget>[
-              Padding(padding: EdgeInsets.only(top:100)),
+              Padding(padding: EdgeInsets.only(top:300)),
               SizedBox(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  color: Colors.green,
+                ),
                 width: 40,
                 height: 40,
               ),
               Padding(
                 padding: EdgeInsets.only(top: 16),
-                child: Text('Awaiting result...', style: TextStyle(fontSize: 30)),
               )
             ];
           }
@@ -140,30 +161,60 @@ class _ManageListState extends State<ManageList>{
           builder:
       ),*/
 
-Future _getentries(int n){
-
-}
-
-Widget _myList(int n){
-  var entries = _getentries(n);
-
-  return ListView.separated(
-    padding: const EdgeInsets.fromLTRB(8.0, 20.0, 8.0, 8.0),
-    scrollDirection: Axis.vertical,
-    shrinkWrap: true,
-    itemCount: 2,
-    itemBuilder: (BuildContext context, int index) {
-      return Container(
-        height: 62,
-        color: index%2==0?Colors.green:Colors.green[200],
-        child: ListTile(
-          leading: const Icon(Icons.star, color: Colors.amberAccent),
-          title: Text('Entry '), //{entries[index]}'),
-          trailing: const Icon(Icons.wysiwyg), )
+Widget _myList(int n, List<Manage> mlist){
+  if(n==0){
+    return Container(
+      child: Column(
+        children: <Widget>[
+          SizedBox(height: 100),
+          Icon(
+              Icons.add_shopping_cart, size: 100,
+          ),
+        ],
+      )
+    );
+  }
+  else{
+    return ListView.separated(
+      padding: const EdgeInsets.fromLTRB(8.0, 20.0, 8.0, 8.0),
+      scrollDirection: Axis.vertical,
+      shrinkWrap: true,
+      itemCount: n,
+      itemBuilder: (BuildContext context, int index) {
+        return Container(
+          height: 75,
+          color: index % 2 == 0 ? Colors.green : Colors.green[200],
+          child: ListTile(
+            leading: const Icon(Icons.star, color: Colors.amberAccent),
+            title: Text(
+              '${mlist[index].title}',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+              textAlign: TextAlign.start,
+            ), //{entries[index]}'),
+            subtitle: Padding(
+              padding: EdgeInsets.only(top: 5),
+              child: Text(''
+                  '${mlist[index].description}',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            trailing: IconButton(
+              icon: Icon(Icons.add),
+            ),
+          ),
         );
       },
-    separatorBuilder: (BuildContext context, int index) => const Divider(),
-  );
+      separatorBuilder: (BuildContext context, int index) => const Divider(),
+    );
+  }
 }
 
 Widget _buildAppBar(context) {
