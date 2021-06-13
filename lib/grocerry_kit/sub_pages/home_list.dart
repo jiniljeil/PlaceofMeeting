@@ -68,7 +68,7 @@ class HomeList extends StatelessWidget {
                       print(id);
                       Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => makeRoomPage(id: id))
+                          MaterialPageRoute(builder: (context) => makeRoomPage(id: id,))
                       );
                     }
                 ),

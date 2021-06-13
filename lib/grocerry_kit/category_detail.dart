@@ -36,7 +36,6 @@ class _CategoryDetailPage extends State<CategoryDetailPage> {
         chatUsers.add(new ChatUsers(name: row[0], room_ex: row[1].toInt().toString(), imageURL: "images/userImage1.jpeg"));
       }
     }
-
     conn.close();
   }
 
