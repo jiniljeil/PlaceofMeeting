@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
       // 여기서 bottom bar 변경
       HomeList(id: widget.id),
       SearchPage(),
-      ProfileList(),
+      ProfileList(id: widget.id),
       MyAccountPage(id: widget.id),
     ];
 
@@ -109,40 +109,4 @@ class _HomePageState extends State<HomePage> {
       body: _widgetList[_index],
     );
   }
-}
-
-Widget _buildBottomBar(BuildContext con) {
-  return BottomNavigationBar(
-    // selectedItemColor: Colors.green,
-    // unselectedItemColor: Colors.black,
-    type: BottomNavigationBarType.fixed,
-    currentIndex: 2,
-    onTap: (index) {},
-    items: [
-      BottomNavigationBarItem(
-          icon: Icon(
-            CartIcons.home,
-            color: Colors.black,
-          ),
-          title: Text('   Store  ', style: TextStyle())),
-      BottomNavigationBarItem(
-          icon: Icon(
-            CartIcons.cart,
-          ),
-          title: Text('My Cart', style: TextStyle())),
-      BottomNavigationBarItem(
-          icon: Icon(
-            CartIcons.favourites,
-          ),
-          title: Text('Favourites', style: TextStyle())),
-      BottomNavigationBarItem(
-          icon: Icon(
-            CartIcons.account,
-          ),
-          title: Text(
-            'My Account',
-            style: TextStyle(),
-          ))
-    ],
-  );
 }

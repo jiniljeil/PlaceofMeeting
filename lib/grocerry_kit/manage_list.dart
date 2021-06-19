@@ -101,9 +101,9 @@ class _ManageListState extends State<ManageList>{
           List<Widget> children;
           if(snapshot.hasData){
             children = <Widget>[
-              SizedBox(height: 30),
+              SizedBox(height: 23),
               Text(
-                  'Managing',
+                  'Manage My Own Room',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,

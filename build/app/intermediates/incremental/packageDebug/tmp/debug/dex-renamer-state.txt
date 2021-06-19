@@ -1,4 +1,4 @@
-#Sun Jun 13 22:30:33 KST 2021
+#Sat Jun 19 20:15:32 KST 2021
 base.1=C\:\\Users\\audwn\\StudioProjects\\Flutter-UI-Kits\\build\\app\\intermediates\\transforms\\dexMerger\\debug\\0
 path.1=classes.dex
 base.0=C\:\\Users\\audwn\\StudioProjects\\Flutter-UI-Kits\\build\\app\\intermediates\\transforms\\dexMerger\\debug\\1
