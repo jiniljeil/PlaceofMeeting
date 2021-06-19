@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mysql1/mysql1.dart';
+import '../db_conn.dart';
 import '../home_page.dart';
 import 'design_course_app_theme.dart';
 
@@ -79,15 +80,9 @@ class _BoardPageState extends State<BoardPage>
   }
 
   Future joinRoom(int uid, int room_id) async {
-    final conn = await MySqlConnection.connect(ConnectionSettings(
-        host: 'placeofmeeting.cjdnzbhmdp0z.us-east-1.rds.amazonaws.com',
-        port: 3306,
-        user: 'rootuser',
-        db: 'placeofmeeting',
-        password: 'databaseproject'
-    ));
+    final conn = await MySqlConnection.connect(Database.getConnection());
     var results = await conn.query(
-        'insert into room_people values (?, ?)', [uid, room_id]);
+        'insert into room_people values (?, ?, ?)', [uid, room_id, 1]);
 
     for(var col in results){
       print(col);
@@ -309,6 +304,7 @@ class _BoardPageState extends State<BoardPage>
                                                   child: TextButton(
                                                     onPressed: () async{
                                                       print("dddd");
+                                                      print(widget.id);
                                                       var results = await joinRoom(widget.id, widget.room_id);
 
                                                       Navigator.push(

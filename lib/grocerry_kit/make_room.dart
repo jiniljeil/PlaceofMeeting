@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_widgets/grocerry_kit/home_page.dart';
 import 'package:mysql1/mysql1.dart';
 
+import 'db_conn.dart';
+
 class makeRoomPage extends StatefulWidget {
   final int id;
 
@@ -25,20 +27,15 @@ class _makeRoomPage extends State<makeRoomPage> {
     int _category;
     DateTime _selectedTime;
 
+    int uid;
+    uid = widget.id;
 
     void changeCategory(int n) {
       _category = n;
     }
 
     Future check(int uid, int cate, TextEditingController title, TextEditingController content, dynamic date, TextEditingController num) async{
-
-      final conn = await MySqlConnection.connect(ConnectionSettings(
-          host: 'placeofmeeting.cjdnzbhmdp0z.us-east-1.rds.amazonaws.com',
-          port: 3306,
-          user: 'rootuser',
-          db: 'placeofmeeting'  ,
-          password: 'databaseproject'
-      ));
+      final conn = await MySqlConnection.connect(Database.getConnection());
 
       print('dddddddd');
       print(title.text);
@@ -49,8 +46,8 @@ class _makeRoomPage extends State<makeRoomPage> {
       print(uid);
 
       var result = await conn.query(
-            'insert into rooms values (?, ?, ?, ?, ?, ?, ?, ?)',
-            [uid, 0, cate, title.text, num.text, 1, content.text, date]
+            'insert into rooms values (?, ?, ?, ?, ?, ?, ?)',
+            [uid, 0, cate, title.text, num.text, content.text, date]
       );
 
       for(var col in result){
@@ -59,8 +56,7 @@ class _makeRoomPage extends State<makeRoomPage> {
 
       conn.close();
     }
-    int uid;
-    uid = widget.id;
+
     return Scaffold(
       appBar: AppBar(
           backgroundColor: Colors.green,

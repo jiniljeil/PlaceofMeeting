@@ -3,6 +3,7 @@ import 'package:flutter_widgets/grocerry_kit/board_pages/board_room.dart';
 import 'package:mysql1/mysql1.dart';
 import 'package:flutter/widgets.dart';
 import '../category/category_detail.dart';
+import '../make_room.dart';
 import '../model/product_model.dart';
 import 'package:flutter_widgets/utils/cart_icons_icons.dart';
 
@@ -68,7 +69,10 @@ class _HomeListState extends State<HomeList> {
                 ),
                 IconButton(
                     onPressed: (){
-                      Navigator.pushNamed(context, '/grocerry/makeroom');
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => makeRoomPage(id: widget.id))
+                      );
                     },
                     icon: Icon(Icons.add_circle_outlined)
                 ),
@@ -108,7 +112,7 @@ class _HomeListState extends State<HomeList> {
                 //  print(data);
                   Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => CategoryDetailPage(category_id: index))
+                      MaterialPageRoute(builder: (context) => CategoryDetailPage(category_id: index, id: widget.id,))
                   );
                 },
               ),

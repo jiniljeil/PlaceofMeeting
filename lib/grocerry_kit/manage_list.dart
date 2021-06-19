@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/grocerry_kit/manage_one.dart';
 import 'package:mysql1/mysql1.dart';
+import 'db_conn.dart';
 import 'model/product_model.dart';
 import 'package:flutter_widgets/utils/cart_icons_icons.dart';
 import 'dart:async';
@@ -52,13 +53,7 @@ class _ManageListState extends State<ManageList>{
   Future<int> getData(int uid) async{
     List<Manage> temp = [];
     int n_data;
-    final conn = await MySqlConnection.connect(ConnectionSettings(
-        host: 'placeofmeeting.cjdnzbhmdp0z.us-east-1.rds.amazonaws.com',
-        port: 3306,
-        user: 'rootuser',
-        db: 'placeofmeeting',
-        password: 'databaseproject'
-    ));
+    final conn = await MySqlConnection.connect(Database.getConnection());
 
     var results = await conn.query(
         'select title, description, count '

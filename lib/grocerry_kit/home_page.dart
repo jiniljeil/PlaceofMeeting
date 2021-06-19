@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
             }
         ),
         title: Text(
-          '좋은사람 있으면 소개시켜줘',
+          'Place of Meeting',
           style: TextStyle(color: Colors.white),
         ),
         actions: <Widget>[

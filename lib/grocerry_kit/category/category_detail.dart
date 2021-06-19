@@ -51,6 +51,7 @@ class _CategoryDetailPage extends State<CategoryDetailPage> {
   void initState() {
     super.initState();
     db_board_list_of_category(widget.category_id);
+    print("ID" +widget.id.toString());
   }
 
   @override
