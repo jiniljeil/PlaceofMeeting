@@ -3,6 +3,8 @@ import 'package:flutter/rendering.dart';
 import 'dart:async';
 import 'package:mysql1/mysql1.dart';
 
+import 'db_conn.dart';
+
 class SignupPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -64,56 +66,49 @@ class _SignupPageState extends State<SignupPage> {
     else return 0;
   }
 
-  Future main(TextEditingController id, TextEditingController pwd, TextEditingController name, TextEditingController date, String gender,
+  Future<int> main(TextEditingController id, TextEditingController pwd, TextEditingController name, TextEditingController date, String gender,
       TextEditingController email, TextEditingController pnum ) async{
 
-    final conn = await MySqlConnection.connect(ConnectionSettings(
-        host: 'placeofmeeting.cjdnzbhmdp0z.us-east-1.rds.amazonaws.com',
-        port: 3306,
-        user: 'rootuser',
-        db: 'placeofmeeting'  ,
-        password: 'databaseproject'
-        ));
+    final conn = await MySqlConnection.connect(Database.getConnection());
 
-    var result = await conn.query(
+    await conn.query(
          'insert into login_info values (?, ?, ?, ?, ?, ?, ?)',
           [0, gender=='Man'? 1 : 0, date.text, id.text, pwd.text, email.text, pnum.text]
     );
 
+    var results = await conn.query(
+        'select ID from login_info order by ID desc limit 1'
+    );
+
+    var a;
+    for(var row in results){
+      a = row[0];
+    }
     conn.close();
+
+    return a;
   }
 
-  Future majorIn(String m1, String m2) async{
+  Future majorIn(int id, String m1, String m2) async{
 
-    final conn = await MySqlConnection.connect(ConnectionSettings(
-        host: 'placeofmeeting.cjdnzbhmdp0z.us-east-1.rds.amazonaws.com',
-        port: 3306,
-        user: 'rootuser',
-        db: 'placeofmeeting'  ,
-        password: 'databaseproject'
-    ));
+    final conn = await MySqlConnection.connect(Database.getConnection());
+    await conn.query("set @m1 := ?", [m1]);
 
     var result = await conn.query(
         'insert into major values (?, ?, ?)',
-        [0, m1, m2]
+        [id, m1, m2]
     );
 
     conn.close();
   }
 
-  Future residenceIn(String nation, String city, TextEditingController adress) async{
+  Future residenceIn(int id, String nation, String city, TextEditingController adress) async{
 
-    final conn = await MySqlConnection.connect(ConnectionSettings(
-        host: 'placeofmeeting.cjdnzbhmdp0z.us-east-1.rds.amazonaws.com',
-        port: 3306,
-        user: 'rootuser',
-        db: 'placeofmeeting'  ,
-        password: 'databaseproject'
-    ));
+    final conn = await MySqlConnection.connect(Database.getConnection());
 
     var result = await conn.query(
         'insert into residence values (?, ?, ?, ?)',
-        [0, nation, city, adress.text]
+        [id, nation, city, adress.text]
     );
 
     conn.close();
@@ -506,7 +501,7 @@ class _SignupPageState extends State<SignupPage> {
                               color: Colors.green, shape: BoxShape.circle),
                           child: IconButton (
                             color: Colors.white,
-                            onPressed: () {// 텍스트폼필드의 상태가 적함하는
+                            onPressed: () async{// 텍스트폼필드의 상태가 적함하는
                               int flag = 0;
                               Controller.values.forEach((element) {
                                 if(idController.text.isEmpty) flag = 0;
@@ -519,9 +514,10 @@ class _SignupPageState extends State<SignupPage> {
                                 else flag = 100;
                               });
                               if(flag == 100 && _dupcheck){
-                                main(idController, pwdController, nameController, dateController, _selected, emailController, phoneController);
-                                majorIn(_major1, _major2);
-                                residenceIn(_nation, _city, adressController);
+                                int iid;
+                                iid = await main(idController, pwdController, nameController, dateController, _selected, emailController, phoneController);
+                                majorIn(iid, _major1, _major2);
+                                residenceIn(iid, _nation, _city, adressController);
                                 Navigator.pushNamed(context, '/');
                               }
                               else if(_dupcheck == false){
