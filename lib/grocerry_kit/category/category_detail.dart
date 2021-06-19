@@ -8,7 +8,8 @@ import '../model/product_model.dart';
 
 class CategoryDetailPage extends StatefulWidget {
   final int category_id;
-  CategoryDetailPage({Key key, @required this.category_id}) : super(key:key);
+  final int id ;
+  CategoryDetailPage({Key key, @required this.category_id, @required this.id}) : super(key:key);
 
   @override
   State<StatefulWidget> createState() => new _CategoryDetailPage();
@@ -18,7 +19,7 @@ class _CategoryDetailPage extends State<CategoryDetailPage> {
   Map<int,String> category_title = {0: 'Sports', 1: 'Game', 2:'Music', 3:'Study', 4:'Food', 5: 'Friends', 6: 'Book' ,7:'etc'};
   IconData category_icon ;
   List<ChatUsers> chatUsers = new List<ChatUsers>();
-  Future db_board_list_of_category(int category_id) async {
+  Future db_board_list_of_category(int categoryId) async {
     final conn = await MySqlConnection.connect(ConnectionSettings(
         host: 'placeofmeeting.cjdnzbhmdp0z.us-east-1.rds.amazonaws.com',
         port: 3306,
@@ -27,13 +28,13 @@ class _CategoryDetailPage extends State<CategoryDetailPage> {
         password: 'databaseproject'
     ));
 
-    var result = await conn.query("SELECT title, count, room_id FROM rooms WHERE category IN (SELECT category_id FROM interests WHERE category_id = ?)", [category_id]);
+    var result = await conn.query("SELECT title, count, room_id FROM rooms WHERE category IN (SELECT category_id FROM interests WHERE category_id = ?)", [categoryId]);
 
     if (result.isNotEmpty) {
       for (var row in result) {
         chatUsers.add(new ChatUsers(name: row[0], room_ex: row[1].toInt().toString(), room_id: row[2], imageURL: "images/userImage1.jpeg"));
         // print('debugggggggggg');
-        // print(row[0]);
+        // print(row[0]);,
         // print(row[1]);
         // print(row[2]);
       }
@@ -186,6 +187,7 @@ class _CategoryDetailPage extends State<CategoryDetailPage> {
             room_ex: chatUsers[index].room_ex,
             imageUrl: chatUsers[index].imageURL,
             room_id: chatUsers[index].room_id,
+            id: widget.id,
           );
         },
       ),
@@ -207,14 +209,16 @@ class ChatRoomList extends StatefulWidget{
   String room_ex; // 방 설명
   String imageUrl;
   int room_id;//Icon icon_name; // 아이콘이나 이미지
+  int id;
   // String time;
   // bool isMessageRead;
-  ChatRoomList({ this.name, this.room_ex, this.imageUrl, this.room_id/*,@required this.time,@required this.isMessageRead*/});
+  ChatRoomList({ this.name, this.room_ex, this.imageUrl, this.room_id, this.id/*,@required this.time,@required this.isMessageRead*/});
   @override
   _ChatRoomListState createState() => _ChatRoomListState();
 }
 
 class _ChatRoomListState extends State<ChatRoomList> {
+
 
   Future db_category_list() async {
     final conn = await MySqlConnection.connect(ConnectionSettings(
@@ -266,7 +270,7 @@ class _ChatRoomListState extends State<ChatRoomList> {
                         // Navigator.pushNamed(context, '/grocerry/board');
                         Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => BoardPage(room_id: widget.room_id))
+                            MaterialPageRoute(builder: (context) => BoardPage(room_id: widget.room_id, id: widget.id))
                         );
                       }
                   ),

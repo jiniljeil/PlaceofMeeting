@@ -40,7 +40,7 @@ class _ProfileList extends State<ProfileList> {
 
     var results = await conn.query(
         'select title, description, count '
-            'from rooms where host_id = ?', [uid]);
+            'from rooms, room_people where room_people.room_id = rooms.room_id AND room_people.ID = ?', [uid]);
     conn.close();
 
     for(var row in results) {
@@ -177,15 +177,15 @@ Widget _myList(int n, List<Manage> mlist, int uid){
                 ),
               ),
             ),
-            trailing: IconButton(
-                icon: Icon(Icons.people_alt_outlined, color: Colors.white, size: 35),
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ManageOne(id: uid))
-                  );
-                }
-            ),
+            // trailing: IconButton(
+            //     icon: Icon(Icons.people_alt_outlined, color: Colors.white, size: 35),
+            //     onPressed: () {
+            //       Navigator.push(
+            //           context,
+            //           MaterialPageRoute(builder: (context) => ManageOne(id: uid))
+            //       );
+            //     }
+            // ),
           ),
         );
       },

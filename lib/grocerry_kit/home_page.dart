@@ -7,8 +7,6 @@ import 'manage_list.dart';
 import 'sub_pages/home_list.dart';
 import 'package:flutter_widgets/grocerry_kit/my_account.dart';
 
-
-
 class HomePage extends StatefulWidget {
   final int id;
   HomePage({Key key, @required this.id}) : super(key:key);
