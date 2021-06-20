@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:mysql1/mysql1.dart';
 import 'package:image_picker/image_picker.dart';
 
+import 'db_conn.dart';
 import 'sub_pages/introduce_edit.dart';
 
 class MyAccountPage extends StatefulWidget {
@@ -22,8 +23,8 @@ class _MyAccountPage extends State<MyAccountPage> {
   File _image;
   Image DB_image;
   // TODO: 기타 나중에 작업
-  List<String> job = ['없음','학생', '전문직', '회사원', '자영업', 'CEO', '기타'];
-  List<String> religion = ['없음', '기독교', '천주교', '원불교', '불교', '기타'];
+  List<String> job = ['NONE','Stud', 'Prof', 'Bman', 'Seller', 'CEO', 'etc'];
+  List<String> religion = ['NONE', 'Christ', 'Cathol', 'Won', 'Buddi', 'etc'];
 
   int job_index(String job_t) {
     int idx = 0 ;
@@ -104,13 +105,7 @@ class _MyAccountPage extends State<MyAccountPage> {
     String name;
     String memo;
     String MBTI;
-    final conn = await MySqlConnection.connect(ConnectionSettings(
-        host: 'placeofmeeting.cjdnzbhmdp0z.us-east-1.rds.amazonaws.com',
-        port: 3306,
-        user: 'rootuser',
-        db: 'placeofmeeting'  ,
-        password: 'databaseproject'
-    ));
+    final conn = await MySqlConnection.connect(Database.getConnection());
 
     var result = await conn.query('SELECT gender, date_of_birth, email, phone_num FROM login_info WHERE ID = ?', [id.toString()]);
     var info = await conn.query('SELECT name, memo, religion, job, MBTI FROM person_info WHERE ID = ?',[id.toString()]);
@@ -124,8 +119,8 @@ class _MyAccountPage extends State<MyAccountPage> {
 
     if( info.isNotEmpty) {
       for (var row in info) {
-        name = row[0]; memo = (row[1] == null) ? "없음" : row[1]; religion = (row[2] == null) ? 0 : row[2].toInt();
-        job = (row[3] == null) ? 0 : row[3].toInt(); MBTI = (row[4] == null) ? "없음" : row[4];
+        name = row[0]; memo = (row[1] == null) ? "NONE" : row[1]; religion = (row[2] == null) ? 0 : row[2].toInt();
+        job = (row[3] == null) ? 0 : row[3].toInt(); MBTI = (row[4] == null) ? "NONE" : row[4];
       }
     }
 
@@ -189,13 +184,7 @@ class _MyAccountPage extends State<MyAccountPage> {
     Future<Image> showImage_fromDB() async{
       var base64Image;
       Uint8List _bytesImage;
-      final conn = await MySqlConnection.connect(ConnectionSettings(
-          host: 'placeofmeeting.cjdnzbhmdp0z.us-east-1.rds.amazonaws.com',
-          port: 3306,
-          user: 'rootuser',
-          db: 'placeofmeeting'  ,
-          password: 'databaseproject'
-      ));
+      final conn = await MySqlConnection.connect(Database.getConnection());
 
       base64Image = await conn.query('SELECT image FROM profile_img WHERE ID = ?', [widget.id]);
       print(base64Image);
@@ -433,7 +422,7 @@ class _MyAccountPage extends State<MyAccountPage> {
                                                           user.MBTI = newValue;
                                                         });
                                                       },
-                                                      items: <String>['없음', 'ESTJ', 'ESTP', 'ESFP', 'ESFJ', 'ENTJ', 'ENTP', 'ENFJ', 'ENFP',
+                                                      items: <String>['None', 'ESTJ', 'ESTP', 'ESFP', 'ESFJ', 'ENTJ', 'ENTP', 'ENFJ', 'ENFP',
                                                         'ISTJ', 'ISTP', 'ISFP', 'ISFJ', 'INTJ', 'INTP', 'INFJ', 'INFP']
                                                           .map<DropdownMenuItem<String>>((String value) {
                                                         return DropdownMenuItem<String>(

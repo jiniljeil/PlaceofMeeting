@@ -31,7 +31,7 @@ class Applicant{
 
 class _ManageOneState extends State<ManageOne>{
   List<Applicant> applicant_list = new List<Applicant>();
-  List<String> job = ['없음','학생', '전문직', '회사원', '자영업', 'CEO', '기타'];
+  List<String> job = ['NONE','Student', 'Professor', 'Business', 'Seller', 'CEO', 'etc'];
 
   Future<List<Applicant>> getData(int room_id, int uid) async {
 
