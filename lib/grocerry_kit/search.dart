@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets/grocerry_kit/category/category_detail.dart';
 import 'package:mysql1/mysql1.dart';
 
+import 'board_pages/board_room.dart';
 import 'db_conn.dart';
 
 
@@ -23,6 +25,7 @@ class _SearchPage extends State<SearchPage> {
   final List<String> records =  new List<String>();
   final List<String> title = new List<String>();
   final List<int> numofp = new List<int>();
+  final List<int> room_id_list = new List<int>();
 
   Future db_delete_one_record(int user_id, String record) async {
     final conn = await MySqlConnection.connect(Database.getConnection());
@@ -61,16 +64,16 @@ class _SearchPage extends State<SearchPage> {
   );
 
   Future db_search_list(TextEditingController search_term) async {
-    Map<String, int> room_info = new Map<String, int>();
+    Map<int, Map<String, int>> room_info = new Map<int, Map<String, int>>();
 
     final conn = await MySqlConnection.connect(Database.getConnection());
 
     //print('SELECT title, count FROM rooms WHERE title LIKE \'\%${search_term.text}\%\'');
-    var result = await conn.query('SELECT title, count FROM rooms WHERE title LIKE ?', ['%${search_term.text}%']);
+    var result = await conn.query('SELECT title, count, room_id FROM rooms WHERE title LIKE ?', ['%${search_term.text}%']);
 
     if( result.isNotEmpty ) {
       for (var row in result) {
-        room_info.addAll({row[0].toString():row[1].toInt()});
+        room_info.addAll({row[2]:{row[0].toString():row[1].toInt()}});
       }
     }
 
@@ -123,15 +126,18 @@ class _SearchPage extends State<SearchPage> {
                               onChanged: (text) async {
                                 // 검색 결과
                                 search_text = text;
-                                Map<String, int> result = await db_search_list(textController);
+                                Map<int, Map<String, int>> result = await db_search_list(textController);
                                 setState(() {
+                                  room_id_list.clear();
                                   title.clear(); numofp.clear();
                                   if (result.keys != null) {
-                                    for (var key in result.keys) {
-//                            print("KEY:"+key);
-                                      title.add(key);
-                                      numofp.add(result[key]);
-                                      print(key + " " + result[key].toString());
+
+                                    for (var fkey in result.keys) {
+                                      room_id_list.add(fkey);
+                                      result[fkey].forEach((key, value) {
+                                        title.add(key);
+                                        numofp.add(value);
+                                      });
                                     }
                                   }
                                 });
@@ -236,9 +242,12 @@ class _SearchPage extends State<SearchPage> {
                                               ),
                                             ),
                                             onTap: () async {
-//                                      await db_search_records(widget.id, search_text);
                                               // TODO
                                               // move the clicked page
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(builder: (context) => BoardPage(room_id: room_id_list[index],id: widget.id))
+                                              );
                                             },
                                           );
                                         },

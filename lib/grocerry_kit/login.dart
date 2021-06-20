@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:mysql1/mysql1.dart';
+import 'db_conn.dart';
 import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -16,16 +17,10 @@ class _LoginPageState extends State<LoginPage> {
   final pwdController = TextEditingController();
 
   Future main(TextEditingController id, TextEditingController pwd) async{
-    final conn = await MySqlConnection.connect(ConnectionSettings(
-        host: 'placeofmeeting.cjdnzbhmdp0z.us-east-1.rds.amazonaws.com',
-        port: 3306,
-        user: 'rootuser',
-        db: 'placeofmeeting'  ,
-        password: 'databaseproject'
-    ));
+    final conn = await MySqlConnection.connect(Database.getConnection());
 
     var login = await conn.query(
-        'select ID user_id, password from login_info where user_id = ? && password = ?', [id.text, pwd.text]);
+        'select ID, user_id, password from login_info where user_id = ? && password = ?', [id.text, pwd.text]);
 
     conn.close();
 

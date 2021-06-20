@@ -284,6 +284,10 @@
         "source": "C:\\Users\\audwn\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.0.0-rc01.aar\\2e60b394fa4cd2695c184e4fc3928c4c\\res\\drawable-ldrtl-xhdpi-v17\\abc_spinner_mtrl_am_alpha.9.png"
     },
     {
+        "merged": "C:\\Users\\audwn\\StudioProjects\\Flutter-UI-Kits\\build\\app\\intermediates\\res\\merged\\debug\\xml_flutter_image_picker_file_paths.xml.flat",
+        "source": "C:\\Users\\audwn\\StudioProjects\\Flutter-UI-Kits\\build\\image_picker\\intermediates\\packaged_res\\debug\\xml\\flutter_image_picker_file_paths.xml"
+    },
+    {
         "merged": "C:\\Users\\audwn\\StudioProjects\\Flutter-UI-Kits\\build\\app\\intermediates\\res\\merged\\debug\\anim_abc_grow_fade_in_from_bottom.xml.flat",
         "source": "C:\\Users\\audwn\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-1.0.0-rc01.aar\\2e60b394fa4cd2695c184e4fc3928c4c\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
     },

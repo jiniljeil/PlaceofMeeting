@@ -39,11 +39,11 @@ class ManageList extends StatefulWidget {
 }
 
 class Manage{
+  int room_id;
   String title;
   String description;
   int count;
-
-  Manage(this.title, this.description, this.count);
+  Manage(this.room_id, this.title, this.description, this.count);
 }
 
 class _ManageListState extends State<ManageList>{
@@ -56,15 +56,14 @@ class _ManageListState extends State<ManageList>{
     final conn = await MySqlConnection.connect(Database.getConnection());
 
     var results = await conn.query(
-        'select title, description, count '
+        'select room_id, title, description, count '
             'from rooms where host_id = ?', [uid]);
     conn.close();
 
     for(var row in results) {
-      print('title: ${row[0]}, desc: ${row[1]}, count: ${row[2]}');
-      Manage m = new Manage(row[0], row[1], row[2]);
+      print('room_id: ${row[0]}, title: ${row[1]}, desc: ${row[2]}, count: ${row[3]}');
+      Manage m = new Manage(row[0], row[1], row[2], row[3]);
       temp.add((m));
-   //   _list.add(temp);
     }
 
  //   n_data = results.length;
@@ -200,7 +199,7 @@ Widget _myList(int n, List<Manage> mlist, int uid){
               onPressed: () {
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ManageOne(id: uid))
+                    MaterialPageRoute(builder: (context) => ManageOne(id: uid, room_id: mlist[index].room_id))
                 );
               }
             ),

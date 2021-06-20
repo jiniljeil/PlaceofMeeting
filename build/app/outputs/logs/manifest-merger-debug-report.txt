@@ -1,51 +1,54 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:1:1-39:12
-INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:1:1-39:12
-INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:1:1-39:12
-INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:1:1-39:12
+ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:1:1-40:12
+INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:1:1-40:12
+INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:1:1-40:12
+INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:1:1-40:12
+MERGED from [:image_picker] C:\Users\audwn\StudioProjects\Flutter-UI-Kits\build\image_picker\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:2:1-22:12
+MERGED from [:flutter_plugin_android_lifecycle] C:\Users\audwn\StudioProjects\Flutter-UI-Kits\build\flutter_plugin_android_lifecycle\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.appcompat:appcompat:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\appcompat-1.0.0-rc01.aar\2e60b394fa4cd2695c184e4fc3928c4c\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\fragment-1.1.0.aar\9835ec7b2dca36b26ad7b3272f8efe31\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\exifinterface-1.3.0.aar\7cc154134532440c052228cdcdf75d04\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\vectordrawable-animated-1.0.0-rc01.aar\7cf4ec1c3f73a6372f6b08041a289f2d\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\legacy-support-core-ui-1.0.0-rc01.aar\91f9d5122833fd0c5c537a72a2701866\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\cursoradapter-1.0.0-rc01.aar\0dc44e2a2603593d6669b1c1e84988df\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\legacy-support-core-utils-1.0.0-rc01.aar\5cf20e9bf521829f8ce8750b67983a34\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.vectordrawable:vectordrawable:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\vectordrawable-1.0.0-rc01.aar\44c75aa85c1dfb0fa2f9a18cfd80c70a\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\viewpager-1.0.0.aar\c46d28ff6a1bcfe954483f83e37ff48a\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\fragment-1.1.0.aar\9835ec7b2dca36b26ad7b3272f8efe31\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\loader-1.0.0.aar\9807c591c84daf2701f434548bebe789\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\viewpager-1.0.0.aar\c46d28ff6a1bcfe954483f83e37ff48a\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.activity:activity:1.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\activity-1.0.0.aar\07ff4ef02b072147fc7d3ba8088392dc\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-1.0.0-rc01.aar\c366eb88f31f09a02ccfedb460344633\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\drawerlayout-1.0.0-rc01.aar\a840e738f8e564a77a224271711a2004\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-1.0.0-rc01.aar\bd8581e2f348a99efe2b1d942253de2f\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.customview:customview:1.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\customview-1.0.0.aar\94061018a03752e5d5970d56d61cde31\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-1.0.0-rc01.aar\90a4f6614a5184872a8375c34f96ba81\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-1.0.0-rc01.aar\e8af3fe8e0aa6ad723a4d815faaca897\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\customview-1.0.0.aar\94061018a03752e5d5970d56d61cde31\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core:1.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\core-1.1.0.aar\a72b9ae35b968373245f333a1f1af7b5\AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\lifecycle-runtime-2.2.0.aar\2d3c8943d235d8130e1573848baf8637\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\savedstate-1.0.0.aar\76731f23bcee5fec420f130296044d59\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\lifecycle-livedata-2.0.0.aar\c09cdb02811c6dfafd01ef85d3deb052\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\lifecycle-livedata-core-2.0.0.aar\0a7ca3d2ff3013e501b24588c4a5de7b\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\cursoradapter-1.0.0-rc01.aar\0dc44e2a2603593d6669b1c1e84988df\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\core-runtime-2.0.0.aar\dadfc5fdc71ad8f3cd353e541ac4b3be\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\versionedparcelable-1.1.0.aar\a4a27552573dcf0e0598eb194086ffcd\AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.documentfile:documentfile:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\documentfile-1.0.0-rc01.aar\f25168b6d44e724160c0b6c149cde3a3\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-1.0.0-rc01.aar\4fca50fa9db2a36a35adfc50756a6451\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\print-1.0.0-rc01.aar\51306f4466fc9e1c7e4a43dc84aeb3b3\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\lifecycle-viewmodel-2.1.0.aar\aa194a566b7cbd836d044bb1fa2d4fd3\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\versionedparcelable-1.1.0.aar\a4a27552573dcf0e0598eb194086ffcd\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\core-runtime-2.0.0.aar\dadfc5fdc71ad8f3cd353e541ac4b3be\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\interpolator-1.0.0-rc01.aar\dd927e8ca889c7da05afc8c3b5133f4c\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:1:1-39:12
-INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:1:1-39:12
-INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:1:1-39:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\lifecycle-viewmodel-2.1.0.aar\aa194a566b7cbd836d044bb1fa2d4fd3\AndroidManifest.xml:17:1-22:12
+INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:1:1-40:12
+INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:1:1-40:12
+INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:1:1-40:12
 	package
 		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:2:5-41
 		INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:1:1-39:12
+		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:1:1-40:12
 		INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:1:1-39:12
+		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:1:1-40:12
 		INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:1:11-69
@@ -53,8 +56,16 @@ uses-permission#android.permission.INTERNET
 ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:8:5-66
 	android:name
 		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:8:22-64
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:9:5-79
+MERGED from [:image_picker] C:\Users\audwn\StudioProjects\Flutter-UI-Kits\build\image_picker\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:7:5-80
+MERGED from [:image_picker] C:\Users\audwn\StudioProjects\Flutter-UI-Kits\build\image_picker\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:7:5-80
+	android:name
+		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:9:22-77
 application
-ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:15:5-38:19
+ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:16:5-39:19
+MERGED from [:image_picker] C:\Users\audwn\StudioProjects\Flutter-UI-Kits\build\image_picker\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:10:5-20:19
+MERGED from [:image_picker] C:\Users\audwn\StudioProjects\Flutter-UI-Kits\build\image_picker\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:10:5-20:19
 MERGED from [androidx.core:core:1.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\core-1.1.0.aar\a72b9ae35b968373245f333a1f1af7b5\AndroidManifest.xml:24:5-89
 MERGED from [androidx.core:core:1.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\core-1.1.0.aar\a72b9ae35b968373245f333a1f1af7b5\AndroidManifest.xml:24:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\versionedparcelable-1.1.0.aar\a4a27552573dcf0e0598eb194086ffcd\AndroidManifest.xml:24:5-25:19
@@ -62,61 +73,69 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\au
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\core-1.1.0.aar\a72b9ae35b968373245f333a1f1af7b5\AndroidManifest.xml:24:18-86
 	android:label
-		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:17:9-40
+		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:18:9-40
 	android:icon
-		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:18:9-43
+		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:19:9-43
 	android:name
-		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:16:9-57
+		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:17:9-57
 activity#com.example.flutterwidgets.MainActivity
-ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:19:9-37:20
+ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:20:9-38:20
 	android:launchMode
-		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:21:13-43
+		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:22:13-43
 	android:hardwareAccelerated
-		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:24:13-47
+		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:25:13-47
 	android:windowSoftInputMode
-		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:25:13-55
+		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:26:13-55
 	android:configChanges
-		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:23:13-137
+		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:24:13-137
 	android:theme
-		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:22:13-47
+		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:23:13-47
 	android:name
-		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:20:13-41
+		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:21:13-41
 meta-data#io.flutter.app.android.SplashScreenUntilFirstFrame
-ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:30:13-32:40
+ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:31:13-33:40
 	android:value
-		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:32:17-37
+		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:33:17-37
 	android:name
-		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:31:17-82
+		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:32:17-82
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:33:13-36:29
+ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:34:13-37:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:34:17-68
+ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:35:17-68
 	android:name
-		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:34:25-66
+		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:35:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:35:17-76
+ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:36:17-76
 	android:name
-		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:35:27-74
+		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml:36:27-74
 uses-sdk
 INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml
+MERGED from [:image_picker] C:\Users\audwn\StudioProjects\Flutter-UI-Kits\build\image_picker\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:5:5-44
+MERGED from [:image_picker] C:\Users\audwn\StudioProjects\Flutter-UI-Kits\build\image_picker\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] C:\Users\audwn\StudioProjects\Flutter-UI-Kits\build\flutter_plugin_android_lifecycle\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] C:\Users\audwn\StudioProjects\Flutter-UI-Kits\build\flutter_plugin_android_lifecycle\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:5:5-44
 MERGED from [androidx.appcompat:appcompat:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\appcompat-1.0.0-rc01.aar\2e60b394fa4cd2695c184e4fc3928c4c\AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\appcompat-1.0.0-rc01.aar\2e60b394fa4cd2695c184e4fc3928c4c\AndroidManifest.xml:20:5-44
-MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\fragment-1.1.0.aar\9835ec7b2dca36b26ad7b3272f8efe31\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\fragment-1.1.0.aar\9835ec7b2dca36b26ad7b3272f8efe31\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\exifinterface-1.3.0.aar\7cc154134532440c052228cdcdf75d04\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\exifinterface-1.3.0.aar\7cc154134532440c052228cdcdf75d04\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\vectordrawable-animated-1.0.0-rc01.aar\7cf4ec1c3f73a6372f6b08041a289f2d\AndroidManifest.xml:20:5-44
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\vectordrawable-animated-1.0.0-rc01.aar\7cf4ec1c3f73a6372f6b08041a289f2d\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\legacy-support-core-ui-1.0.0-rc01.aar\91f9d5122833fd0c5c537a72a2701866\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\legacy-support-core-ui-1.0.0-rc01.aar\91f9d5122833fd0c5c537a72a2701866\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\cursoradapter-1.0.0-rc01.aar\0dc44e2a2603593d6669b1c1e84988df\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\cursoradapter-1.0.0-rc01.aar\0dc44e2a2603593d6669b1c1e84988df\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\legacy-support-core-utils-1.0.0-rc01.aar\5cf20e9bf521829f8ce8750b67983a34\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\legacy-support-core-utils-1.0.0-rc01.aar\5cf20e9bf521829f8ce8750b67983a34\AndroidManifest.xml:20:5-44
 MERGED from [androidx.vectordrawable:vectordrawable:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\vectordrawable-1.0.0-rc01.aar\44c75aa85c1dfb0fa2f9a18cfd80c70a\AndroidManifest.xml:20:5-44
 MERGED from [androidx.vectordrawable:vectordrawable:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\vectordrawable-1.0.0-rc01.aar\44c75aa85c1dfb0fa2f9a18cfd80c70a\AndroidManifest.xml:20:5-44
-MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\viewpager-1.0.0.aar\c46d28ff6a1bcfe954483f83e37ff48a\AndroidManifest.xml:20:5-44
-MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\viewpager-1.0.0.aar\c46d28ff6a1bcfe954483f83e37ff48a\AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\fragment-1.1.0.aar\9835ec7b2dca36b26ad7b3272f8efe31\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\fragment-1.1.0.aar\9835ec7b2dca36b26ad7b3272f8efe31\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\loader-1.0.0.aar\9807c591c84daf2701f434548bebe789\AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\loader-1.0.0.aar\9807c591c84daf2701f434548bebe789\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\viewpager-1.0.0.aar\c46d28ff6a1bcfe954483f83e37ff48a\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\viewpager-1.0.0.aar\c46d28ff6a1bcfe954483f83e37ff48a\AndroidManifest.xml:20:5-44
 MERGED from [androidx.activity:activity:1.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\activity-1.0.0.aar\07ff4ef02b072147fc7d3ba8088392dc\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.activity:activity:1.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\activity-1.0.0.aar\07ff4ef02b072147fc7d3ba8088392dc\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-1.0.0-rc01.aar\c366eb88f31f09a02ccfedb460344633\AndroidManifest.xml:20:5-44
@@ -125,12 +144,12 @@ MERGED from [androidx.drawerlayout:drawerlayout:1.0.0-rc01] C:\Users\audwn\.grad
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\drawerlayout-1.0.0-rc01.aar\a840e738f8e564a77a224271711a2004\AndroidManifest.xml:20:5-44
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-1.0.0-rc01.aar\bd8581e2f348a99efe2b1d942253de2f\AndroidManifest.xml:20:5-44
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-1.0.0-rc01.aar\bd8581e2f348a99efe2b1d942253de2f\AndroidManifest.xml:20:5-44
-MERGED from [androidx.customview:customview:1.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\customview-1.0.0.aar\94061018a03752e5d5970d56d61cde31\AndroidManifest.xml:20:5-44
-MERGED from [androidx.customview:customview:1.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\customview-1.0.0.aar\94061018a03752e5d5970d56d61cde31\AndroidManifest.xml:20:5-44
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-1.0.0-rc01.aar\90a4f6614a5184872a8375c34f96ba81\AndroidManifest.xml:20:5-44
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-1.0.0-rc01.aar\90a4f6614a5184872a8375c34f96ba81\AndroidManifest.xml:20:5-44
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-1.0.0-rc01.aar\e8af3fe8e0aa6ad723a4d815faaca897\AndroidManifest.xml:20:5-44
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-1.0.0-rc01.aar\e8af3fe8e0aa6ad723a4d815faaca897\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\customview-1.0.0.aar\94061018a03752e5d5970d56d61cde31\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\customview-1.0.0.aar\94061018a03752e5d5970d56d61cde31\AndroidManifest.xml:20:5-44
 MERGED from [androidx.core:core:1.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\core-1.1.0.aar\a72b9ae35b968373245f333a1f1af7b5\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.core:core:1.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\core-1.1.0.aar\a72b9ae35b968373245f333a1f1af7b5\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\lifecycle-runtime-2.2.0.aar\2d3c8943d235d8130e1573848baf8637\AndroidManifest.xml:20:5-22:41
@@ -141,22 +160,20 @@ MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\audwn\.gradle
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\lifecycle-livedata-2.0.0.aar\c09cdb02811c6dfafd01ef85d3deb052\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\lifecycle-livedata-core-2.0.0.aar\0a7ca3d2ff3013e501b24588c4a5de7b\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\lifecycle-livedata-core-2.0.0.aar\0a7ca3d2ff3013e501b24588c4a5de7b\AndroidManifest.xml:20:5-44
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\cursoradapter-1.0.0-rc01.aar\0dc44e2a2603593d6669b1c1e84988df\AndroidManifest.xml:20:5-44
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\cursoradapter-1.0.0-rc01.aar\0dc44e2a2603593d6669b1c1e84988df\AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\core-runtime-2.0.0.aar\dadfc5fdc71ad8f3cd353e541ac4b3be\AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\core-runtime-2.0.0.aar\dadfc5fdc71ad8f3cd353e541ac4b3be\AndroidManifest.xml:20:5-44
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\versionedparcelable-1.1.0.aar\a4a27552573dcf0e0598eb194086ffcd\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\versionedparcelable-1.1.0.aar\a4a27552573dcf0e0598eb194086ffcd\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.documentfile:documentfile:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\documentfile-1.0.0-rc01.aar\f25168b6d44e724160c0b6c149cde3a3\AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\documentfile-1.0.0-rc01.aar\f25168b6d44e724160c0b6c149cde3a3\AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-1.0.0-rc01.aar\4fca50fa9db2a36a35adfc50756a6451\AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-1.0.0-rc01.aar\4fca50fa9db2a36a35adfc50756a6451\AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\print-1.0.0-rc01.aar\51306f4466fc9e1c7e4a43dc84aeb3b3\AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\print-1.0.0-rc01.aar\51306f4466fc9e1c7e4a43dc84aeb3b3\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\lifecycle-viewmodel-2.1.0.aar\aa194a566b7cbd836d044bb1fa2d4fd3\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\lifecycle-viewmodel-2.1.0.aar\aa194a566b7cbd836d044bb1fa2d4fd3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\versionedparcelable-1.1.0.aar\a4a27552573dcf0e0598eb194086ffcd\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\versionedparcelable-1.1.0.aar\a4a27552573dcf0e0598eb194086ffcd\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\core-runtime-2.0.0.aar\dadfc5fdc71ad8f3cd353e541ac4b3be\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\core-runtime-2.0.0.aar\dadfc5fdc71ad8f3cd353e541ac4b3be\AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\interpolator-1.0.0-rc01.aar\dd927e8ca889c7da05afc8c3b5133f4c\AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0-rc01] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\interpolator-1.0.0-rc01.aar\dd927e8ca889c7da05afc8c3b5133f4c\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\lifecycle-viewmodel-2.1.0.aar\aa194a566b7cbd836d044bb1fa2d4fd3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\audwn\.gradle\caches\transforms-1\files-1.1\lifecycle-viewmodel-2.1.0.aar\aa194a566b7cbd836d044bb1fa2d4fd3\AndroidManifest.xml:20:5-44
 INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml
 	android:targetSdkVersion
@@ -167,3 +184,23 @@ INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main
 		INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml
 		ADDED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\audwn\StudioProjects\Flutter-UI-Kits\android\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from [:image_picker] C:\Users\audwn\StudioProjects\Flutter-UI-Kits\build\image_picker\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:8:5-81
+	android:name
+		ADDED from [:image_picker] C:\Users\audwn\StudioProjects\Flutter-UI-Kits\build\image_picker\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:8:22-78
+provider#io.flutter.plugins.imagepicker.ImagePickerFileProvider
+ADDED from [:image_picker] C:\Users\audwn\StudioProjects\Flutter-UI-Kits\build\image_picker\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:11:9-19:20
+	android:grantUriPermissions
+		ADDED from [:image_picker] C:\Users\audwn\StudioProjects\Flutter-UI-Kits\build\image_picker\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:15:13-47
+	android:authorities
+		ADDED from [:image_picker] C:\Users\audwn\StudioProjects\Flutter-UI-Kits\build\image_picker\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:13:13-74
+	android:exported
+		ADDED from [:image_picker] C:\Users\audwn\StudioProjects\Flutter-UI-Kits\build\image_picker\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:14:13-37
+	android:name
+		ADDED from [:image_picker] C:\Users\audwn\StudioProjects\Flutter-UI-Kits\build\image_picker\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:12:13-82
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:image_picker] C:\Users\audwn\StudioProjects\Flutter-UI-Kits\build\image_picker\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:16:13-18:75
+	android:resource
+		ADDED from [:image_picker] C:\Users\audwn\StudioProjects\Flutter-UI-Kits\build\image_picker\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:18:17-72
+	android:name
+		ADDED from [:image_picker] C:\Users\audwn\StudioProjects\Flutter-UI-Kits\build\image_picker\intermediates\merged_manifests\debug\processDebugManifest\merged\AndroidManifest.xml:17:17-67

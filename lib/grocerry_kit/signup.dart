@@ -46,13 +46,7 @@ class _SignupPageState extends State<SignupPage> {
   bool _dupcheck = false;
 
   Future<int> checkdup(TextEditingController id) async {
-    final conn = await MySqlConnection.connect(ConnectionSettings(
-        host: 'placeofmeeting.cjdnzbhmdp0z.us-east-1.rds.amazonaws.com',
-        port: 3306,
-        user: 'rootuser',
-        db: 'placeofmeeting',
-        password: 'databaseproject'
-    ));
+    final conn = await MySqlConnection.connect(Database.getConnection());
 
     var results = await conn.query(
         'select user_id from login_info where user_id = ?', [id.text]);
@@ -60,7 +54,6 @@ class _SignupPageState extends State<SignupPage> {
     conn.close();
 
     if(results.isNotEmpty){
-      print('중복ㅋㅋㅋ');
       return 1;
     }
     else return 0;
@@ -72,12 +65,14 @@ class _SignupPageState extends State<SignupPage> {
     final conn = await MySqlConnection.connect(Database.getConnection());
 
     await conn.query(
-         'insert into login_info values (?, ?, ?, ?, ?, ?, ?)',
-          [0, gender=='Man'? 1 : 0, date.text, id.text, pwd.text, email.text, pnum.text]
+         'insert into login_info values (?, ?, ?, ?, ?, ?, ?, ?)',
+          [0, gender=='Man'? 1 : 0, date.text, id.text, pwd.text, email.text, pnum.text, name.text]
     );
-
+    await conn.query(
+        'call get_lid(@temp)'
+    );
     var results = await conn.query(
-        'select ID from login_info order by ID desc limit 1'
+            'select @temp'
     );
 
     var a;
@@ -85,7 +80,6 @@ class _SignupPageState extends State<SignupPage> {
       a = row[0];
     }
     conn.close();
-
     return a;
   }
 

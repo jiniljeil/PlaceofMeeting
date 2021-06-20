@@ -1,5 +1,10 @@
+import 'dart:convert';
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:mysql1/mysql1.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'sub_pages/introduce_edit.dart';
 
@@ -14,6 +19,8 @@ class MyAccountPage extends StatefulWidget {
 class _MyAccountPage extends State<MyAccountPage> {
   bool isLoading = true;
   USER user;
+  File _image;
+  Image DB_image;
   // TODO: 기타 나중에 작업
   List<String> job = ['없음','학생', '전문직', '회사원', '자영업', 'CEO', '기타'];
   List<String> religion = ['없음', '기독교', '천주교', '원불교', '불교', '기타'];
@@ -143,7 +150,62 @@ class _MyAccountPage extends State<MyAccountPage> {
   }
   @override
   Widget build(BuildContext context) {
+    final picker = ImagePicker();
 
+    Future get_and_saveImage() async {
+      final conn = await MySqlConnection.connect(ConnectionSettings(
+          host: 'placeofmeeting.cjdnzbhmdp0z.us-east-1.rds.amazonaws.com',
+          port: 3306,
+          user: 'rootuser',
+          db: 'placeofmeeting'  ,
+          password: 'databaseproject'
+      ));
+
+      print("Image picker");
+      List<int> imageBytes;
+      String base64Image;
+      double image_size_kb;
+      final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+      setState(() {
+        if (pickedFile != null) {
+          _image = File(pickedFile.path);
+          imageBytes = _image.readAsBytesSync();
+          image_size_kb = _image.readAsBytesSync().lengthInBytes/1024 ;
+          base64Image = base64Encode(imageBytes);
+          //print("image base64: "+base64Image);
+          DB_image = Image.file(_image);
+          print("setting: "+ DB_image.toString());
+        } else {
+          print('No image selected');
+          return;
+        }
+      });
+      await conn.query('UPDATE profile_img SET image = ?, image_size = ? WHERE ID = ?',[base64Image, image_size_kb, widget.id]);
+      print("save image: "+ _image.path);
+      conn.close();
+    }
+
+    Future<Image> showImage_fromDB() async{
+      var base64Image;
+      Uint8List _bytesImage;
+      final conn = await MySqlConnection.connect(ConnectionSettings(
+          host: 'placeofmeeting.cjdnzbhmdp0z.us-east-1.rds.amazonaws.com',
+          port: 3306,
+          user: 'rootuser',
+          db: 'placeofmeeting'  ,
+          password: 'databaseproject'
+      ));
+
+      base64Image = await conn.query('SELECT image FROM profile_img WHERE ID = ?', [widget.id]);
+      print(base64Image);
+      //print(base64Image.toString().split(' ')[2]/*.replaceAll('}', '').replaceAll(')', '')*/);
+      _bytesImage = Base64Decoder().convert(base64Image.toString().split(' ')[2].replaceAll('}', '').replaceAll(')', ''));
+      //print(_bytesImage);
+      DB_image = Image.memory(_bytesImage);
+      print(DB_image);
+      return DB_image;
+    }
     // TODO: implement build
     return Scaffold(
       body: SingleChildScrollView(
@@ -191,15 +253,34 @@ class _MyAccountPage extends State<MyAccountPage> {
                                     margin: EdgeInsets.only(left:30, right: 30, top:20, bottom: 15),
                                     child: Row(
                                       children: <Widget> [
-                                        Container(
-                                          width: 70,
-                                          height: 70,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(50),
-                                            color: Colors.blue,
-                                          ),
+                                        // Column(
+                                        //   children: [
+                                        //     //_image==null?
+                                        //     CircleAvatar(
+                                        //       child: _image==null?
+                                        //       Image.network('http://handong.edu/site/handong/res/img/logo.png',
+                                        //       fit: BoxFit.cover)
+                                        //       :Image.file(_image, fit: BoxFit.cover),
+                                        //       maxRadius: 30,
+                                        //     ),
+                                        //     // CircleAvatar(
+                                        //     //   child: Image.file(_image),
+                                        //     //   maxRadius: 30,
+                                        //     // ),
+                                        //     IconButton(onPressed: get_and_saveImage, icon: Icon(Icons.photo_camera, size: 20,)),
+                                        //   ],
+                                        // ),
+                                        GestureDetector(
+                                            onTap: () async{
+                                              get_and_saveImage();
+                                            },
+                                            child:
+                                            CircleAvatar(
+                                              child: showImage_fromDB()==null?
+                                              Text("no"):DB_image,
+                                              maxRadius: 30,
+                                            )
                                         ),
-
                                         Padding(
                                           padding: EdgeInsets.only(left: 20),
                                         ),
@@ -336,31 +417,31 @@ class _MyAccountPage extends State<MyAccountPage> {
                                                   ),
                                                   Container(
 //                                  padding: EdgeInsets.only(left: 45, right: 30),
-                                                      child: DropdownButton<String>(
-                                                        value: user.MBTI,
-                                                        icon: const Icon(Icons.arrow_downward,size: 14,),
-                                                        iconSize: 20,
-                                                        elevation: 16,
-                                                        style: const TextStyle(color: Colors.deepPurple),
-                                                        underline: Container(
-                                                          height: 2,
-                                                          color: Colors.deepPurpleAccent,
-                                                        ),
-                                                        onChanged: (String newValue) async {
-                                                          await db_update_MBTI(newValue);
-                                                          setState(() {
-                                                            user.MBTI = newValue;
-                                                          });
-                                                        },
-                                                        items: <String>['없음', 'ESTJ', 'ESTP', 'ESFP', 'ESFJ', 'ENTJ', 'ENTP', 'ENFJ', 'ENFP',
-                                                          'ISTJ', 'ISTP', 'ISFP', 'ISFJ', 'INTJ', 'INTP', 'INFJ', 'INFP']
-                                                            .map<DropdownMenuItem<String>>((String value) {
-                                                          return DropdownMenuItem<String>(
-                                                            value: value,
-                                                            child: Text(value),
-                                                          );
-                                                        }).toList(),
+                                                    child: DropdownButton<String>(
+                                                      value: user.MBTI,
+                                                      icon: const Icon(Icons.arrow_downward,size: 14,),
+                                                      iconSize: 20,
+                                                      elevation: 16,
+                                                      style: const TextStyle(color: Colors.deepPurple),
+                                                      underline: Container(
+                                                        height: 2,
+                                                        color: Colors.deepPurpleAccent,
                                                       ),
+                                                      onChanged: (String newValue) async {
+                                                        await db_update_MBTI(newValue);
+                                                        setState(() {
+                                                          user.MBTI = newValue;
+                                                        });
+                                                      },
+                                                      items: <String>['없음', 'ESTJ', 'ESTP', 'ESFP', 'ESFJ', 'ENTJ', 'ENTP', 'ENFJ', 'ENFP',
+                                                        'ISTJ', 'ISTP', 'ISFP', 'ISFJ', 'INTJ', 'INTP', 'INFJ', 'INFP']
+                                                          .map<DropdownMenuItem<String>>((String value) {
+                                                        return DropdownMenuItem<String>(
+                                                          value: value,
+                                                          child: Text(value),
+                                                        );
+                                                      }).toList(),
+                                                    ),
                                                   )
                                                 ],
                                               )
@@ -387,29 +468,29 @@ class _MyAccountPage extends State<MyAccountPage> {
                                                   Container(
 //                                          margin: EdgeInsets.only(top: 5),
 //                                  padding: EdgeInsets.only(left: 30, right: 30),
-                                                      child: DropdownButton<String>(
-                                                        value: job[user.job],
-                                                        icon: const Icon(Icons.arrow_downward,size: 14,),
-                                                        iconSize: 20,
-                                                        elevation: 16,
-                                                        style: const TextStyle(color: Colors.deepPurple),
-                                                        underline: Container(
-                                                          height: 2,
-                                                          color: Colors.deepPurpleAccent,
-                                                        ),
-                                                        onChanged: (String newValue) async {
-                                                          await db_update_job(newValue);
-                                                          setState(() {
-                                                            user.job = job_index(newValue);
-                                                          });
-                                                        },
-                                                        items: job.map<DropdownMenuItem<String>>((String value) {
-                                                          return DropdownMenuItem<String>(
-                                                            value: value,
-                                                            child: Text(value),
-                                                          );
-                                                        }).toList(),
+                                                    child: DropdownButton<String>(
+                                                      value: job[user.job],
+                                                      icon: const Icon(Icons.arrow_downward,size: 14,),
+                                                      iconSize: 20,
+                                                      elevation: 16,
+                                                      style: const TextStyle(color: Colors.deepPurple),
+                                                      underline: Container(
+                                                        height: 2,
+                                                        color: Colors.deepPurpleAccent,
                                                       ),
+                                                      onChanged: (String newValue) async {
+                                                        await db_update_job(newValue);
+                                                        setState(() {
+                                                          user.job = job_index(newValue);
+                                                        });
+                                                      },
+                                                      items: job.map<DropdownMenuItem<String>>((String value) {
+                                                        return DropdownMenuItem<String>(
+                                                          value: value,
+                                                          child: Text(value),
+                                                        );
+                                                      }).toList(),
+                                                    ),
                                                   )
                                                 ],
                                               )
@@ -433,29 +514,29 @@ class _MyAccountPage extends State<MyAccountPage> {
                                                   ),
 
                                                   Container(
-                                                      child: DropdownButton<String>(
-                                                        value: religion[user.religion],
-                                                        icon: const Icon(Icons.arrow_downward,size: 14,),
-                                                        iconSize: 20,
-                                                        elevation: 16,
-                                                        style: const TextStyle(color: Colors.deepPurple),
-                                                        underline: Container(
-                                                          height: 2,
-                                                          color: Colors.deepPurpleAccent,
-                                                        ),
-                                                        onChanged: (String newValue) async {
-                                                          await db_update_job(newValue);
-                                                          setState(() {
-                                                            user.religion = religion_index(newValue);
-                                                          });
-                                                        },
-                                                        items: religion.map<DropdownMenuItem<String>>((String value) {
-                                                          return DropdownMenuItem<String>(
-                                                            value: value,
-                                                            child: Text(value),
-                                                          );
-                                                        }).toList(),
+                                                    child: DropdownButton<String>(
+                                                      value: religion[user.religion],
+                                                      icon: const Icon(Icons.arrow_downward,size: 14,),
+                                                      iconSize: 20,
+                                                      elevation: 16,
+                                                      style: const TextStyle(color: Colors.deepPurple),
+                                                      underline: Container(
+                                                        height: 2,
+                                                        color: Colors.deepPurpleAccent,
                                                       ),
+                                                      onChanged: (String newValue) async {
+                                                        await db_update_job(newValue);
+                                                        setState(() {
+                                                          user.religion = religion_index(newValue);
+                                                        });
+                                                      },
+                                                      items: religion.map<DropdownMenuItem<String>>((String value) {
+                                                        return DropdownMenuItem<String>(
+                                                          value: value,
+                                                          child: Text(value),
+                                                        );
+                                                      }).toList(),
+                                                    ),
                                                   )
                                                 ],
                                               )
@@ -490,13 +571,13 @@ class _MyAccountPage extends State<MyAccountPage> {
                                               ),
                                               Padding(padding: EdgeInsets.only(left: 5)),
                                               IconButton(
-                                                icon: Icon(Icons.create, color: Colors.grey, size: 22),
-                                                onPressed: () {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(builder: (context) => IntroduceEditPage(id: widget.id, comment: user.memo))
-                                                  );
-                                                }
+                                                  icon: Icon(Icons.create, color: Colors.grey, size: 22),
+                                                  onPressed: () {
+                                                    Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(builder: (context) => IntroduceEditPage(id: widget.id, comment: user.memo))
+                                                    );
+                                                  }
                                               ),
 
                                             ],
