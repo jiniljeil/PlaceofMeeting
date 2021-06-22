@@ -77,6 +77,7 @@ class _MyAccountPage extends State<MyAccountPage> {
   }
 
   Future db_update_religion(String religion) async {
+    print("update religion===============================");
     final conn = await MySqlConnection.connect(ConnectionSettings(
         host: 'placeofmeeting.cjdnzbhmdp0z.us-east-1.rds.amazonaws.com',
         port: 3306,
@@ -85,7 +86,8 @@ class _MyAccountPage extends State<MyAccountPage> {
         password: 'databaseproject'
     ));
 
-    var result = await conn.query('UPDATE person_info SET religion = ? WHERE ID = ?',[religion, widget.id]);
+    print("================"+religion_index(religion).toString());
+    var result = await conn.query('UPDATE person_info SET religion = ? WHERE ID = ?',[religion_index(religion), widget.id]);
 
     if( result.isNotEmpty ) {
       print("RELIGION UPDATE");
@@ -156,7 +158,7 @@ class _MyAccountPage extends State<MyAccountPage> {
           password: 'databaseproject'
       ));
 
-      print("Image picker");
+      //print("Image picker");
       List<int> imageBytes;
       String base64Image;
       double image_size_kb;
@@ -170,7 +172,7 @@ class _MyAccountPage extends State<MyAccountPage> {
           base64Image = base64Encode(imageBytes);
           //print("image base64: "+base64Image);
           DB_image = Image.file(_image);
-          print("setting: "+ DB_image.toString());
+          //print("setting: "+ DB_image.toString());
         } else {
           print('No image selected');
           return;
@@ -187,12 +189,12 @@ class _MyAccountPage extends State<MyAccountPage> {
       final conn = await MySqlConnection.connect(Database.getConnection());
 
       base64Image = await conn.query('SELECT image FROM profile_img WHERE ID = ?', [widget.id]);
-      print(base64Image);
+      //print(base64Image);
       //print(base64Image.toString().split(' ')[2]/*.replaceAll('}', '').replaceAll(')', '')*/);
       _bytesImage = Base64Decoder().convert(base64Image.toString().split(' ')[2].replaceAll('}', '').replaceAll(')', ''));
       //print(_bytesImage);
       DB_image = Image.memory(_bytesImage);
-      print(DB_image);
+      //print(DB_image);
       return DB_image;
     }
     // TODO: implement build
@@ -422,7 +424,7 @@ class _MyAccountPage extends State<MyAccountPage> {
                                                           user.MBTI = newValue;
                                                         });
                                                       },
-                                                      items: <String>['None', 'ESTJ', 'ESTP', 'ESFP', 'ESFJ', 'ENTJ', 'ENTP', 'ENFJ', 'ENFP',
+                                                      items: <String>['NONE', 'ESTJ', 'ESTP', 'ESFP', 'ESFJ', 'ENTJ', 'ENTP', 'ENFJ', 'ENFP',
                                                         'ISTJ', 'ISTP', 'ISFP', 'ISFJ', 'INTJ', 'INTP', 'INFJ', 'INFP']
                                                           .map<DropdownMenuItem<String>>((String value) {
                                                         return DropdownMenuItem<String>(
@@ -514,7 +516,7 @@ class _MyAccountPage extends State<MyAccountPage> {
                                                         color: Colors.deepPurpleAccent,
                                                       ),
                                                       onChanged: (String newValue) async {
-                                                        await db_update_job(newValue);
+                                                        await db_update_religion(newValue);
                                                         setState(() {
                                                           user.religion = religion_index(newValue);
                                                         });

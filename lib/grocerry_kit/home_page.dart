@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
     List<Widget> _widgetList = [
       // 여기서 bottom bar 변경
       HomeList(id: widget.id),
-      SearchPage(),
+      SearchPage(id: widget.id),
       ProfileList(id: widget.id),
       MyAccountPage(id: widget.id),
     ];
@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.green,
         automaticallyImplyLeading: false,
         leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Colors.white),
+            icon: Icon(Icons.logout, color: Colors.white),
             onPressed:(){
               Navigator.pushNamed(context, '/');
             }

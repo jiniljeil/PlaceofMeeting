@@ -130,7 +130,7 @@ class _HomeListState extends State<HomeList> {
                 },
               ),
             ),
-             // 리얼 아이템 나열한 친구
+            // 리얼 아이템 나열한 친구
           ],
         ),
       ),
@@ -160,7 +160,7 @@ class _HomeListState extends State<HomeList> {
                 iconSize: 45,
                 color: Colors.black38,
                 onPressed: (){
-                //  print(data);
+                  //  print(data);
                   Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => CategoryDetailPage(category_id: index, id: widget.id,))
@@ -191,7 +191,7 @@ class _HomeListState extends State<HomeList> {
   final List<int> category_set = new List<int>();
   final List<int> roomId_set = new List<int>();
   int real_room_cnt = 0;
-  
+
   Future room_list() async{
     final conn = await MySqlConnection.connect(ConnectionSettings(
         host: 'placeofmeeting.cjdnzbhmdp0z.us-east-1.rds.amazonaws.com',
@@ -208,7 +208,7 @@ class _HomeListState extends State<HomeList> {
     count_set.clear();
     roomId_set.clear();
     real_room_cnt = room_info.length;
-    
+
     for(var row in room_info){
       //print(row[0].toString() +" "+row[1]+" "+row[2].toString() + " "+ row[3].toString());
       category_set.add(row[0].toInt());
@@ -241,6 +241,7 @@ class _HomeListState extends State<HomeList> {
             category: category_set[index].toString(),// 일시적 조치 category
             count: count_set[index].toString(), // 카운트
             roomID: roomId_set[index],
+            id: widget.id,
           );
         },
       ),
@@ -278,9 +279,10 @@ class ChatRoomList extends StatefulWidget{
   String category; // 방 설명
   String count; //Icon icon_name; // 아이콘이나 이미지
   int roomID;
+  int id;
   // String time;
   // bool isMessageRead;
-  ChatRoomList({@required this.title,@required this.category,@required this.count, @required this.roomID/*,@required this.time,@required this.isMessageRead*/});
+  ChatRoomList({@required this.title,@required this.category,@required this.count, @required this.roomID, @required this.id/*,@required this.time,@required this.isMessageRead*/});
   @override
   _ChatRoomListState createState() => _ChatRoomListState();
 }
@@ -309,9 +311,9 @@ class _ChatRoomListState extends State<ChatRoomList> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text(widget.category, style: TextStyle(fontSize: 16),),
-                          SizedBox(height: 6,),
                           Text(widget.title,style: TextStyle(fontSize: 13,color: Colors.grey.shade600, fontWeight: FontWeight.normal),),
+                          SizedBox(height: 6,),
+                          Text(widget.category, style: TextStyle(fontSize: 16),),
                         ],
                       ),
                     ),
@@ -324,7 +326,7 @@ class _ChatRoomListState extends State<ChatRoomList> {
                         // Navigator.pushNamed(context, '/grocerry/board');
                         Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => BoardPage(room_id: widget.roomID))
+                            MaterialPageRoute(builder: (context) => BoardPage(room_id: widget.roomID, id: widget.id))
                         );
                       }
                   ),

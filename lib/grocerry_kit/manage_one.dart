@@ -39,11 +39,11 @@ class _ManageOneState extends State<ManageOne>{
     print("ROOM: " + room_id.toString() );
     var results = await conn.query(
         'SELECT P.id, P.name, P.MBTI, P.job, major FROM (select room_people.ID AS id, name, MBTI, job from room_people, person_info where room_people.ID = person_info.ID and room_people.state = 1 and room_people.room_id = ?) AS P, major WHERE major.ID = P.id',
-      [room_id]
+        [room_id]
     );
 
     for(var row in results) {
-      applicant_list.add((new Applicant(row[0], row[1], (row[2] == null) ? 'None' : row[2], job[(row[3] == null) ? 0 : row[3].toInt()], (row[4] == null) ? 'None' : row[4])));
+      applicant_list.add((new Applicant(row[0], (row[1] == null) ? 'None' : row[1], (row[2] == null) ? 'None' : row[2], job[(row[3] == null) ? 0 : row[3].toInt()], (row[4] == null) ? 'None' : row[4])));
     }
 
     conn.close();
@@ -82,7 +82,7 @@ class _ManageOneState extends State<ManageOne>{
                       children = <Widget>[
                         SizedBox(height: 15),
                         Text(
-                          'Applicant',
+                          'No Applicant',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -163,76 +163,76 @@ Widget _showapplicant(int n, List<Applicant> mlist, int uid, int room_id){
     itemCount: n,
     itemBuilder: (BuildContext context, int index) {
       return Container(
-        height: 100,
-        margin: EdgeInsets.only(top:10, bottom:10),
-        padding: EdgeInsets.only(left: 16, right: 16),
-        child: Card(
-          shadowColor: Colors.blueAccent,
-          elevation: 10,
-          child: Column(
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.only(left: 10, top: 5, bottom: 5,),
-                height: 80,
-                child: Row(
-                  children: <Widget> [
-                    Container(
-                      width: 50,
-                      height: 50,
-                      //TODO (image)
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Colors.blue,
-                      ),
-                    ),
-                    Container(
-                      width: 200,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
+          height: 100,
+          margin: EdgeInsets.only(top:10, bottom:10),
+          padding: EdgeInsets.only(left: 16, right: 16),
+          child: Card(
+              shadowColor: Colors.blueAccent,
+              elevation: 10,
+              child: Column(
+                children: <Widget>[
+                  Container(
+                      margin: EdgeInsets.only(left: 10, top: 5, bottom: 5,),
+                      height: 80,
+                      child: Row(
                         children: <Widget> [
                           Container(
-                            child: Text(mlist[index].name, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
-                          ),
-
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget> [
-                              Container(
-                                  child: Text("MBTI: " + mlist[index].MBTI)
-                              ),
-                              Padding(padding: EdgeInsets.only(left: 5)),
-                              Container(
-                                child: Text("Job: " + mlist[index].job),
-                              ),
-                            ]
+                            width: 50,
+                            height: 50,
+                            //TODO (image)
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              color: Colors.blue,
+                            ),
                           ),
                           Container(
-                            child: Text("Major: "+ mlist[index].major),
+                              width: 200,
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: <Widget> [
+                                  Container(
+                                    child: Text(mlist[index].name, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
+                                  ),
+
+                                  Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: <Widget> [
+                                        Container(
+                                            child: Text("MBTI: " + mlist[index].MBTI)
+                                        ),
+                                        Padding(padding: EdgeInsets.only(left: 5)),
+                                        Container(
+                                          child: Text("Job: " + mlist[index].job),
+                                        ),
+                                      ]
+                                  ),
+                                  Container(
+                                    child: Text("Major: "+ mlist[index].major),
+                                  )
+                                ],
+                              )
+                          ),
+                          Container(
+                            child: TextButton(
+                              child: Text("Permit", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.white)),
+                              onPressed: () async {
+                                print("TESTT");
+                                await db_permit(room_id, mlist[index].id) ;
+                              },
+                            ),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.blueAccent,
+                            ),
                           )
                         ],
                       )
-                    ),
-                    Container(
-                      child: TextButton(
-                        child: Text("Permit", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.white)),
-                        onPressed: () async {
-                          print("TESTT");
-                          await db_permit(room_id, mlist[index].id) ;
-                        },
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.blueAccent,
-                      ),
-                    )
-                  ],
-                )
-              ),
-            ],
+                  ),
+                ],
+              )
           )
-        )
       );
     },
 //    separatorBuilder: (BuildContext context, int index) => const Divider(),

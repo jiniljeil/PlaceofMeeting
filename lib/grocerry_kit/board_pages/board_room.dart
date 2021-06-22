@@ -80,7 +80,9 @@ class _BoardPageState extends State<BoardPage>
   }
 
   Future joinRoom(int uid, int room_id) async {
+    print("join room");
     final conn = await MySqlConnection.connect(Database.getConnection());
+    print("uid: "+uid.toString());
     var results = await conn.query(
         'insert into room_people values (?, ?, ?)', [uid, room_id, 1]);
 
@@ -139,7 +141,7 @@ class _BoardPageState extends State<BoardPage>
                       children: <Widget>[
                         AspectRatio(
                           aspectRatio: 1.2,
-                          child: Image.asset('image.png'),
+                          child: Image.asset('images/image.jpg'),
                         ),
                       ],
                     ),

@@ -17,7 +17,8 @@ class CategoryDetailPage extends StatefulWidget {
 
 class _CategoryDetailPage extends State<CategoryDetailPage> {
   Map<int,String> category_title = {0: 'Sports', 1: 'Game', 2:'Music', 3:'Study', 4:'Food', 5: 'Friends', 6: 'Book' ,7:'etc'};
-  IconData category_icon ;
+  List<IconData> category_icon = [Icons.sports_basketball_outlined, Icons.videogame_asset_outlined, Icons.music_video,
+    Icons.edit_rounded, Icons.fastfood, Icons.wc, Icons.menu_book_rounded, Icons.video_collection_outlined];
   List<ChatUsers> chatUsers = new List<ChatUsers>();
   Future db_board_list_of_category(int categoryId) async {
     final conn = await MySqlConnection.connect(ConnectionSettings(
@@ -151,7 +152,7 @@ class _CategoryDetailPage extends State<CategoryDetailPage> {
           height: 200,
           alignment: Alignment.center,
           child: Icon(
-            category_icon,
+            category_icon[widget.category_id],
             size: 200,
             color: Colors.lightGreen,
           ),
